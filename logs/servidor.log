@@ -99,3 +99,18 @@
 2026-02-15 19:09:13,911 - INFO - [*] Señal de interrupcion recibida
 2026-02-15 19:09:13,911 - INFO - [STOP] Deteniendo servidor...
 2026-02-15 19:09:13,911 - INFO - [OK] Servidor detenido correctamente
+2026-02-15 19:10:51,375 - INFO - ============================================================
+2026-02-15 19:10:51,376 - INFO - 
+2026-02-15 19:10:51,376 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-15 19:10:51,376 - INFO - 
+2026-02-15 19:10:51,376 - INFO - ============================================================
+2026-02-15 19:10:51,376 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-15 19:10:51,376 - INFO - [OK] Base de datos inicializada
+2026-02-15 19:10:51,376 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-15 19:10:51,376 - INFO - [*] Esperando conexiones de clientes...
+2026-02-15 19:10:51,376 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-15 19:11:08,371 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 56440)
+2026-02-15 19:11:08,378 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-15 19:11:08,378 - INFO - [OK] #1 - Tipo: login
+2026-02-15 19:11:08,426 - INFO - [OK] Login exitoso: usuario1
