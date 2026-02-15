@@ -1,6 +1,7 @@
 # servidor/servidor.py
 """
-Servidor principal - Maneja conexiones de clientes
+Servidor principal - Maneja UNA petición por conexión
+OPCIÓN 1: Cierra después de cada respuesta
 """
 import socket
 import threading
@@ -20,7 +21,7 @@ from common.protocolo import Mensaje
 logger = logging.getLogger(__name__)
 
 class ServidorBancario:
-    """Servidor bancario con sockets multihilo"""
+    """Servidor bancario - Una petición por conexión"""
     
     def __init__(self, host: str = None, port: int = None):
         self.host = host or Config.SERVER_HOST
@@ -40,7 +41,7 @@ class ServidorBancario:
         self.socket_servidor: Optional[socket.socket] = None
         self.activo = False
         
-        # ✅ Registrar manejador de señales
+        # Registrar manejador de señales
         signal.signal(signal.SIGINT, self._signal_handler)
         if hasattr(signal, 'SIGBREAK'):
             signal.signal(signal.SIGBREAK, self._signal_handler)
@@ -59,7 +60,7 @@ class ServidorBancario:
             self.socket_servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.socket_servidor.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             
-            # ✅ Configurar timeout para permitir interrupciones
+            # Configurar timeout
             self.socket_servidor.settimeout(1.0)
             
             # Bind y listen
@@ -75,6 +76,7 @@ class ServidorBancario:
             logger.info("=" * 60)
             logger.info("[OK] Clave compartida cargada correctamente")
             logger.info("[OK] Base de datos inicializada")
+            logger.info("[OK] Modo: UNA PETICION POR CONEXION")
             logger.info("[*] Esperando conexiones de clientes...")
             logger.info("[*] Presiona Ctrl+C para detener\n")
             
@@ -87,22 +89,24 @@ class ServidorBancario:
     
     def _aceptar_conexiones(self):
         """Acepta conexiones entrantes (loop principal)"""
+        contador_conexiones = 0
+        
         while self.activo:
             try:
-                # Aceptar conexión (con timeout)
+                # Aceptar conexión
                 conn, addr = self.socket_servidor.accept()
-                logger.info(f"[IN] Nueva conexion desde {addr}")
+                contador_conexiones += 1
+                logger.info(f"[IN] Conexion #{contador_conexiones} desde {addr}")
                 
                 # Crear thread para manejar el cliente
                 thread = threading.Thread(
                     target=self._manejar_cliente,
-                    args=(conn, addr),
+                    args=(conn, addr, contador_conexiones),
                     daemon=True
                 )
                 thread.start()
                 
             except socket.timeout:
-                # ✅ Timeout normal - permite que Ctrl+C funcione
                 continue
                 
             except KeyboardInterrupt:
@@ -118,14 +122,20 @@ class ServidorBancario:
                 if self.activo:
                     logger.error(f"[ERROR] Error aceptando conexion: {e}")
     
-    def _manejar_cliente(self, conn: socket.socket, addr: tuple):
-        """Maneja la comunicación con un cliente"""
+    def _manejar_cliente(self, conn: socket.socket, addr: tuple, num_conn: int):
+        """
+        Maneja UNA petición y cierra la conexión
+        ✅ OPCIÓN 1: Procesa UN mensaje y cierra
+        """
         try:
             # Recibir datos
             datos = conn.recv(4096)
+            
             if not datos:
                 logger.warning(f"[WARNING] {addr} - Conexion cerrada sin datos")
                 return
+            
+            logger.debug(f"[*] #{num_conn} Recibidos {len(datos)} bytes")
             
             # Desempaquetar mensaje
             try:
@@ -149,9 +159,9 @@ class ServidorBancario:
                 self._enviar_error(conn, str(e))
                 return
             
-            # Mensaje válido - parsear
+            # Parsear mensaje
             mensaje = Mensaje.desde_json(mensaje_bytes)
-            logger.info(f"[OK] {addr} - Mensaje valido: {mensaje.tipo}")
+            logger.info(f"[OK] #{num_conn} - Tipo: {mensaje.tipo}")
             
             # Procesar según tipo
             if mensaje.tipo == Mensaje.REGISTRO:
@@ -171,10 +181,10 @@ class ServidorBancario:
             logger.error(f"[ERROR] {addr} - Error: {e}", exc_info=True)
         
         finally:
+            # ✅ OPCIÓN 1: SIEMPRE cerrar después de responder
             conn.close()
-            logger.info(f"[CLOSE] {addr} - Conexion cerrada")
+            logger.debug(f"[CLOSE] #{num_conn} - Conexion cerrada")
     
-    # ... (resto de métodos sin cambios)
     def _procesar_registro(self, conn, mensaje, addr):
         username = mensaje.datos.get("username")
         password = mensaje.datos.get("password")
@@ -247,7 +257,6 @@ class ServidorBancario:
             logger.error(f"[ERROR] Error enviando respuesta: {e}")
     
     def detener(self):
-        """Detiene el servidor limpiamente"""
         if not self.activo:
             return
         
@@ -264,7 +273,6 @@ class ServidorBancario:
 
 
 def main():
-    """Función principal"""
     import sys
     from pathlib import Path
     

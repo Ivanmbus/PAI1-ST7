@@ -73,3 +73,14 @@
 2026-02-15 18:45:12,546 - INFO - [OK] ('127.0.0.1', 57152) - Mensaje valido: login
 2026-02-15 18:45:12,595 - INFO - [OK] Login exitoso: usuario1
 2026-02-15 18:45:12,596 - INFO - [CLOSE] ('127.0.0.1', 57152) - Conexion cerrada
+2026-02-15 19:03:55,881 - INFO - ============================================================
+2026-02-15 19:03:55,882 - INFO - 
+2026-02-15 19:03:55,882 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-15 19:03:55,882 - INFO - 
+2026-02-15 19:03:55,882 - INFO - ============================================================
+2026-02-15 19:03:55,882 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-15 19:03:55,882 - INFO - [OK] Base de datos inicializada
+2026-02-15 19:03:55,882 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-15 19:03:55,882 - INFO - [*] Esperando conexiones de clientes...
+2026-02-15 19:03:55,883 - INFO - [*] Presiona Ctrl+C para detener
+

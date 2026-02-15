@@ -1,14 +1,14 @@
 # cliente/cliente_cli.py
 """
 Interfaz de línea de comandos del cliente
+OPCIÓN 1: Reconexión automática por mensaje
 """
 import json
 import logging
 from getpass import getpass
 from typing import Optional
 
-from .communicacion import ClienteSocket
-from .crypto_client import preparar_mensaje_seguro
+from client.communicacion import ClienteSocket
 from common.config import Config
 from common.protocolo import Mensaje
 
@@ -20,11 +20,15 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class ClienteCLI:
-    """Cliente de línea de comandos"""
+    """Cliente de línea de comandos con reconexión automática"""
     
     def __init__(self):
-        self.socket_cliente = ClienteSocket(Config.SERVER_HOST, Config.SERVER_PORT)
+        # ✅ NO mantener socket abierto, solo guardar config
+        self.host = Config.SERVER_HOST
+        self.port = Config.SERVER_PORT
         self.clave_compartida = Config.get_shared_key()
+        
+        # Estado de sesión (solo local)
         self.username_actual: Optional[str] = None
         self.sesion_activa = False
     
@@ -35,17 +39,19 @@ class ClienteCLI:
     
     def mostrar_banner(self):
         """Muestra el banner inicial"""
-        print("╔" + "═" * 58 + "╗")
-        print("║" + " " * 58 + "║")
-        print("║" + "   SISTEMA BANCARIO SEGURO - CLIENTE".center(58) + "║")
-        print("║" + "   PAI1-INTEGRIDOS".center(58) + "║")
-        print("║" + " " * 58 + "║")
-        print("╚" + "═" * 58 + "╝")
+        print("=" * 60)
+        print("")
+        print("   SISTEMA BANCARIO SEGURO - CLIENTE".center(60))
+        print("   PAI1-INTEGRIDOS".center(60))
+        print("   (Reconexion automatica)".center(60))
+        print("")
+        print("=" * 60)
         print()
     
     def enviar_mensaje(self, mensaje: Mensaje) -> Optional[dict]:
         """
         Envía un mensaje protegido al servidor
+        ✅ OPCIÓN 1: Crea nueva conexión para cada mensaje
         
         Args:
             mensaje: Mensaje a enviar
@@ -53,13 +59,33 @@ class ClienteCLI:
         Returns:
             dict: Respuesta del servidor o None si hay error
         """
-        # Empaquetar mensaje con MAC y NONCE
-        paquete = mensaje.empaquetar(self.clave_compartida)
-        
-        # Enviar y recibir respuesta
-        respuesta = self.socket_cliente.enviar_y_recibir(paquete)
-        
-        return respuesta
+        try:
+            # ✅ Crear nueva conexión temporal
+            socket_temp = ClienteSocket(self.host, self.port)
+            
+            logger.debug(f"[*] Conectando al servidor...")
+            if not socket_temp.conectar():
+                logger.error("No se pudo conectar al servidor")
+                return None
+            
+            logger.debug(f"[OK] Conectado")
+            
+            # Empaquetar mensaje con MAC y NONCE
+            paquete = mensaje.empaquetar(self.clave_compartida)
+            
+            # Enviar y recibir respuesta
+            logger.debug(f"[*] Enviando mensaje...")
+            respuesta = socket_temp.enviar_y_recibir(paquete)
+            
+            # ✅ Cerrar conexión inmediatamente
+            socket_temp.desconectar()
+            logger.debug(f"[OK] Desconectado")
+            
+            return respuesta
+            
+        except Exception as e:
+            logger.error(f"Error en comunicacion: {e}")
+            return None
     
     # ════════════════════════════════════════════════════════
     # MENÚ PRINCIPAL (SIN LOGIN)
@@ -68,15 +94,15 @@ class ClienteCLI:
     def menu_principal(self):
         """Menú principal (usuario no logueado)"""
         while True:
-            print("\n" + "─" * 60)
-            print("   MENÚ PRINCIPAL")
-            print("─" * 60)
+            print("\n" + "-" * 60)
+            print("   MENU PRINCIPAL")
+            print("-" * 60)
             print("[1] Registro de nuevo usuario")
-            print("[2] Iniciar sesión (Login)")
+            print("[2] Iniciar sesion (Login)")
             print("[3] Salir")
-            print("─" * 60)
+            print("-" * 60)
             
-            opcion = input("\nSeleccione una opción: ").strip()
+            opcion = input("\nSeleccione una opcion: ").strip()
             
             if opcion == "1":
                 self.registrar_usuario()
@@ -84,10 +110,10 @@ class ClienteCLI:
                 if self.iniciar_sesion():
                     self.menu_sesion()
             elif opcion == "3":
-                print("\n ¡Hasta luego!")
+                print("\n[*] Hasta luego!")
                 break
             else:
-                print("[ERROR] Opción inválida")
+                print("[ERROR] Opcion invalida")
     
     # ════════════════════════════════════════════════════════
     # REGISTRO
@@ -95,19 +121,19 @@ class ClienteCLI:
     
     def registrar_usuario(self):
         """Proceso de registro de nuevo usuario"""
-        print("\n" + "╔" + "═" * 58 + "╗")
-        print("║" + "   REGISTRO DE NUEVO USUARIO".center(58) + "║")
-        print("╚" + "═" * 58 + "╝")
+        print("\n" + "=" * 60)
+        print("   REGISTRO DE NUEVO USUARIO".center(60))
+        print("=" * 60)
         print()
         
         username = input("Nombre de usuario: ").strip()
         if not username:
-            print("[ERROR] El nombre de usuario no puede estar vacío")
+            print("[ERROR] El nombre de usuario no puede estar vacio")
             return
         
         password = getpass("Contraseña: ")
         if not password:
-            print("[ERROR] La contraseña no puede estar vacía")
+            print("[ERROR] La contraseña no puede estar vacia")
             return
         
         password_confirm = getpass("Confirmar contraseña: ")
@@ -124,22 +150,22 @@ class ClienteCLI:
             }
         )
         
-        print("\n[LOCK] Preparando mensaje seguro...")
-        print("   ├─ Generando NONCE...")
-        print("   ├─ Calculando MAC...")
-        print("   └─ Enviando al servidor...")
+        print("\n[*] Preparando mensaje seguro...")
+        print("   |-- Generando NONCE...")
+        print("   |-- Calculando MAC...")
+        print("   |-- Conectando y enviando al servidor...")
         
-        # Enviar al servidor
+        # ✅ Enviar al servidor (reconecta automáticamente)
         respuesta = self.enviar_mensaje(mensaje)
         
         if not respuesta:
-            print("[ERROR] Error de comunicación con el servidor")
+            print("[ERROR] Error de comunicacion con el servidor")
             return
         
         # Procesar respuesta
         if respuesta.get("status") == "ok":
             print(f"\n[OK] {respuesta.get('mensaje')}")
-            print(f"   Usuario '{username}' registrado exitosamente")
+            print(f"    Usuario '{username}' registrado exitosamente")
         else:
             print(f"\n[ERROR] {respuesta.get('mensaje')}")
     
@@ -154,9 +180,9 @@ class ClienteCLI:
         Returns:
             bool: True si el login fue exitoso
         """
-        print("\n" + "╔" + "═" * 58 + "╗")
-        print("║" + "   INICIAR SESIÓN".center(58) + "║")
-        print("╚" + "═" * 58 + "╝")
+        print("\n" + "=" * 60)
+        print("   INICIAR SESION".center(60))
+        print("=" * 60)
         print()
         
         username = input("Nombre de usuario: ").strip()
@@ -171,21 +197,22 @@ class ClienteCLI:
             }
         )
         
-        print("\n[LOCK] Autenticando...")
+        print("\n[*] Autenticando...")
         
-        # Enviar al servidor
+        # ✅ Enviar al servidor (reconecta automáticamente)
         respuesta = self.enviar_mensaje(mensaje)
         
         if not respuesta:
-            print("[ERROR] Error de comunicación con el servidor")
+            print("[ERROR] Error de comunicacion con el servidor")
             return False
         
         # Procesar respuesta
         if respuesta.get("status") == "ok":
+            # ✅ Guardar sesión LOCALMENTE
             self.username_actual = username
             self.sesion_activa = True
             print(f"\n[OK] {respuesta.get('mensaje')}")
-            print(f"   Bienvenido, {username}!")
+            print(f"    Bienvenido, {username}!")
             return True
         else:
             print(f"\n[ERROR] {respuesta.get('mensaje')}")
@@ -198,15 +225,15 @@ class ClienteCLI:
     def menu_sesion(self):
         """Menú para usuario con sesión activa"""
         while self.sesion_activa:
-            print("\n" + "─" * 60)
-            print(f"   SESIÓN ACTIVA - Usuario: {self.username_actual}")
-            print("─" * 60)
+            print("\n" + "-" * 60)
+            print(f"   SESION ACTIVA - Usuario: {self.username_actual}")
+            print("-" * 60)
             print("[1] Realizar transferencia")
             print("[2] Ver mis transacciones")
-            print("[3] Cerrar sesión")
-            print("─" * 60)
+            print("[3] Cerrar sesion")
+            print("-" * 60)
             
-            opcion = input("\nSeleccione una opción: ").strip()
+            opcion = input("\nSeleccione una opcion: ").strip()
             
             if opcion == "1":
                 self.realizar_transferencia()
@@ -215,7 +242,7 @@ class ClienteCLI:
             elif opcion == "3":
                 self.cerrar_sesion()
             else:
-                print("[ERROR] Opción inválida")
+                print("[ERROR] Opcion invalida")
     
     # ════════════════════════════════════════════════════════
     # TRANSACCIONES
@@ -223,19 +250,19 @@ class ClienteCLI:
     
     def realizar_transferencia(self):
         """Proceso de transferencia bancaria"""
-        print("\n" + "╔" + "═" * 58 + "╗")
-        print("║" + "   NUEVA TRANSFERENCIA".center(58) + "║")
-        print("╚" + "═" * 58 + "╝")
+        print("\n" + "=" * 60)
+        print("   NUEVA TRANSFERENCIA".center(60))
+        print("=" * 60)
         print()
         
         cuenta_origen = input("Cuenta origen (IBAN): ").strip()
         if not cuenta_origen:
-            print("[ERROR] La cuenta origen no puede estar vacía")
+            print("[ERROR] La cuenta origen no puede estar vacia")
             return
         
         cuenta_destino = input("Cuenta destino (IBAN): ").strip()
         if not cuenta_destino:
-            print("[ERROR] La cuenta destino no puede estar vacía")
+            print("[ERROR] La cuenta destino no puede estar vacia")
             return
         
         try:
@@ -244,21 +271,21 @@ class ClienteCLI:
                 print("[ERROR] La cantidad debe ser mayor a 0")
                 return
         except ValueError:
-            print("[ERROR] Cantidad inválida")
+            print("[ERROR] Cantidad invalida")
             return
         
         # Confirmación
-        print("\n" + "─" * 60)
+        print("\n" + "-" * 60)
         print("   CONFIRMAR TRANSFERENCIA")
-        print("─" * 60)
+        print("-" * 60)
         print(f"   Origen:   {cuenta_origen}")
         print(f"   Destino:  {cuenta_destino}")
         print(f"   Cantidad: {cantidad:.2f} EUR")
-        print("─" * 60)
+        print("-" * 60)
         
         confirmar = input("\n¿Confirmar transferencia? (s/n): ").strip().lower()
         if confirmar != 's':
-            print("[ERROR] Transferencia cancelada")
+            print("[*] Transferencia cancelada")
             return
         
         # Crear mensaje de transacción
@@ -272,37 +299,40 @@ class ClienteCLI:
             }
         )
         
-        print("\n[LOCK] Procesando transferencia segura...")
-        print("   ├─ Generando NONCE único...")
-        print("   ├─ Calculando MAC de transacción...")
-        print("   └─ Enviando al servidor...")
+        print("\n[*] Procesando transferencia segura...")
+        print("   |-- Generando NONCE unico...")
+        print("   |-- Calculando MAC de transaccion...")
+        print("   |-- Conectando y enviando al servidor...")
         
-        # Enviar al servidor
+        # ✅ Enviar al servidor (reconecta automáticamente)
         respuesta = self.enviar_mensaje(mensaje)
         
         if not respuesta:
-            print("[ERROR] Error de comunicación con el servidor")
+            print("[ERROR] Error de comunicacion con el servidor")
             return
         
         # Procesar respuesta
         if respuesta.get("status") == "ok":
             print(f"\n[OK] {respuesta.get('mensaje')}")
-            print(f"   Transferencia de {cantidad:.2f} EUR completada")
-            print("   ✓ Integridad verificada (MAC válido)")
+            print(f"    Transferencia de {cantidad:.2f} EUR completada")
+            print("    [OK] Integridad verificada (MAC valido)")
         else:
             print(f"\n[ERROR] {respuesta.get('mensaje')}")
     
     def ver_transacciones(self):
         """Ver transacciones del usuario"""
-        print("\n Funcionalidad en desarrollo...")
-        print("   (Implementar en Fase 6)")
+        print("\n[*] Funcionalidad en desarrollo...")
+        print("    (Implementar en Fase 6)")
     
     def cerrar_sesion(self):
-        """Cierra la sesión actual"""
-        print(f"\n Cerrando sesión de {self.username_actual}...")
+        """Cierra la sesión actual (solo local, no envía al servidor)"""
+        print(f"\n[*] Cerrando sesion de {self.username_actual}...")
+        
+        # ✅ OPCIÓN 1: No enviar mensaje al servidor, solo cerrar localmente
         self.username_actual = None
         self.sesion_activa = False
-        print("[OK] Sesión cerrada")
+        
+        print("[OK] Sesion cerrada")
     
     # ════════════════════════════════════════════════════════
     # INICIAR CLIENTE
@@ -313,18 +343,17 @@ class ClienteCLI:
         self.limpiar_pantalla()
         self.mostrar_banner()
         
-        # Conectar al servidor
-        if not self.socket_cliente.conectar():
-            print("[Error] No se pudo conectar al servidor")
-            print("   Asegúrate de que el servidor esté ejecutándose")
-            return
+        # ✅ OPCIÓN 1: NO conectar al inicio
+        # Cada mensaje creará su propia conexión
+        
+        print(f"[*] Configurado para: {self.host}:{self.port}")
+        print("[OK] Reconexion automatica habilitada\n")
         
         try:
             # Mostrar menú principal
             self.menu_principal()
-        finally:
-            # Desconectar al salir
-            self.socket_cliente.desconectar()
+        except Exception as e:
+            logger.error(f"Error: {e}")
 
 
 # ════════════════════════════════════════════════════════
