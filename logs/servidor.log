@@ -84,3 +84,18 @@
 2026-02-15 19:03:55,882 - INFO - [*] Esperando conexiones de clientes...
 2026-02-15 19:03:55,883 - INFO - [*] Presiona Ctrl+C para detener
 
+2026-02-15 19:04:13,923 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 57884)
+2026-02-15 19:04:13,930 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-15 19:04:13,930 - INFO - [OK] #1 - Tipo: login
+2026-02-15 19:04:13,985 - INFO - [OK] Login exitoso: usuario1
+2026-02-15 19:04:48,532 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 57902)
+2026-02-15 19:04:48,538 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-15 19:04:48,538 - INFO - [OK] #2 - Tipo: transaccion
+2026-02-15 19:04:48,544 - INFO - [OK] Transacción registrada (ID: 1): usuario1 → 20.00 EUR (1111111111 → 2222222222)
+2026-02-15 19:05:49,413 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 57926)
+2026-02-15 19:05:49,422 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-15 19:05:49,422 - INFO - [OK] #3 - Tipo: login
+2026-02-15 19:05:49,471 - INFO - [OK] Login exitoso: usuario1
+2026-02-15 19:09:13,911 - INFO - [*] Señal de interrupcion recibida
+2026-02-15 19:09:13,911 - INFO - [STOP] Deteniendo servidor...
+2026-02-15 19:09:13,911 - INFO - [OK] Servidor detenido correctamente
