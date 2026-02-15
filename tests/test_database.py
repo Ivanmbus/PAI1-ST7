@@ -1,4 +1,3 @@
-# tests/test_database.py
 import pytest
 from pathlib import Path
 from server.database import DatabaseManager

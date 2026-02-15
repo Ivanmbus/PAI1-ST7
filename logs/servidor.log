@@ -1,0 +1,75 @@
+2026-02-15 18:10:21,058 - INFO - ============================================================
+2026-02-15 18:10:21,059 - INFO - 
+2026-02-15 18:10:21,059 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-15 18:10:21,059 - INFO - 
+2026-02-15 18:10:21,059 - INFO - ============================================================
+2026-02-15 18:10:21,059 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-15 18:10:21,059 - INFO - [OK] Base de datos inicializada
+2026-02-15 18:10:21,059 - INFO - [*] Esperando conexiones de clientes...
+
+2026-02-15 18:10:46,798 - INFO - 
+[WARNING] Servidor interrumpido por el usuario
+2026-02-15 18:10:46,798 - INFO - [STOP] Deteniendo servidor...
+2026-02-15 18:10:46,798 - INFO - [OK] Servidor detenido
+2026-02-15 18:11:40,456 - INFO - ============================================================
+2026-02-15 18:11:40,457 - INFO - 
+2026-02-15 18:11:40,457 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-15 18:11:40,457 - INFO - 
+2026-02-15 18:11:40,457 - INFO - ============================================================
+2026-02-15 18:11:40,457 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-15 18:11:40,457 - INFO - [OK] Base de datos inicializada
+2026-02-15 18:11:40,457 - INFO - [*] Esperando conexiones de clientes...
+
+2026-02-15 18:20:51,035 - INFO - ============================================================
+2026-02-15 18:20:51,035 - INFO - 
+2026-02-15 18:20:51,036 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-15 18:20:51,036 - INFO - 
+2026-02-15 18:20:51,036 - INFO - ============================================================
+2026-02-15 18:20:51,036 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-15 18:20:51,036 - INFO - [OK] Base de datos inicializada
+2026-02-15 18:20:51,036 - INFO - [*] Esperando conexiones de clientes...
+
+2026-02-15 18:21:22,818 - INFO -  Nueva conexi�n desde ('127.0.0.1', 51209)
+2026-02-15 18:21:35,580 - INFO - [OK] ('127.0.0.1', 51209) - Mensaje v�lido: registro
+2026-02-15 18:34:10,292 - INFO - ============================================================
+2026-02-15 18:34:10,292 - INFO - 
+2026-02-15 18:34:10,292 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-15 18:34:10,292 - INFO - 
+2026-02-15 18:34:10,292 - INFO - ============================================================
+2026-02-15 18:34:10,292 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-15 18:34:10,293 - INFO - [OK] Base de datos inicializada
+2026-02-15 18:34:10,293 - INFO - [*] Esperando conexiones de clientes...
+
+2026-02-15 18:34:17,010 - INFO -  Nueva conexión desde ('127.0.0.1', 65205)
+2026-02-15 18:34:26,591 - INFO - ✅ Mensaje completamente validado (MAC + NONCE)
+2026-02-15 18:34:26,591 - INFO - [OK] ('127.0.0.1', 65205) - Mensaje válido: login
+2026-02-15 18:34:26,664 - INFO - ✅ Login exitoso: usuario1
+2026-02-15 18:34:26,665 - INFO -  ('127.0.0.1', 65205) - Conexión cerrada
+2026-02-15 18:44:38,137 - INFO - ============================================================
+2026-02-15 18:44:38,137 - INFO - 
+2026-02-15 18:44:38,137 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-15 18:44:38,137 - INFO - 
+2026-02-15 18:44:38,138 - INFO - ============================================================
+2026-02-15 18:44:38,138 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-15 18:44:38,138 - INFO - [OK] Base de datos inicializada
+2026-02-15 18:44:38,138 - INFO - [*] Esperando conexiones de clientes...
+2026-02-15 18:44:38,138 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-15 18:44:41,170 - INFO - [*] Señal de interrupcion recibida
+2026-02-15 18:44:41,170 - INFO - [STOP] Deteniendo servidor...
+2026-02-15 18:44:41,170 - INFO - [OK] Servidor detenido correctamente
+2026-02-15 18:45:01,470 - INFO - ============================================================
+2026-02-15 18:45:01,470 - INFO - 
+2026-02-15 18:45:01,470 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-15 18:45:01,470 - INFO - 
+2026-02-15 18:45:01,470 - INFO - ============================================================
+2026-02-15 18:45:01,470 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-15 18:45:01,471 - INFO - [OK] Base de datos inicializada
+2026-02-15 18:45:01,471 - INFO - [*] Esperando conexiones de clientes...
+2026-02-15 18:45:01,471 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-15 18:45:06,756 - INFO - [IN] Nueva conexion desde ('127.0.0.1', 57152)
+2026-02-15 18:45:12,546 - INFO - ✅ Mensaje completamente validado (MAC + NONCE)
+2026-02-15 18:45:12,546 - INFO - [OK] ('127.0.0.1', 57152) - Mensaje valido: login
+2026-02-15 18:45:12,595 - INFO - [OK] Login exitoso: usuario1
+2026-02-15 18:45:12,596 - INFO - [CLOSE] ('127.0.0.1', 57152) - Conexion cerrada

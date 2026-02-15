@@ -5,8 +5,8 @@ Protocolo de comunicación cliente-servidor
 import json
 import base64
 from typing import Dict, Any, Tuple
-from crypto__utils import calcular_mac, generar_nonce
-from .constantes import ENCODING
+from common.crypto__utils import calcular_mac, generar_nonce
+from common.constantes import ENCODING
 
 class Mensaje:
     """Representa un mensaje del protocolo"""
