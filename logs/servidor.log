@@ -308,3 +308,33 @@
 2026-02-21 16:33:54,865 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
 2026-02-21 16:33:54,865 - INFO - [OK] #1 - Tipo: login
 2026-02-21 16:33:54,932 - INFO - [OK] Login exitoso: ralsei
+2026-02-21 16:40:17,378 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 61906)
+2026-02-21 16:40:17,378 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 61906)
+2026-02-21 16:40:17,469 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:40:17,469 - INFO - [OK] #2 - Tipo: login
+2026-02-21 16:40:17,537 - INFO - [OK] Login exitoso: admin
+2026-02-21 16:40:26,466 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 61907)
+2026-02-21 16:40:26,466 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 61907)
+2026-02-21 16:40:29,021 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:40:29,021 - INFO - [OK] #3 - Tipo: transaccion
+2026-02-21 16:40:29,114 - INFO - [OK] Transacción registrada (ID: 2): admin → 2.00 EUR (213 → 1234)
+2026-02-21 16:41:17,512 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 54795)
+2026-02-21 16:41:17,512 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 54795)
+2026-02-21 16:41:18,268 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:41:18,269 - INFO - [OK] #4 - Tipo: login
+2026-02-21 16:41:18,316 - INFO - [OK] Login exitoso: ralsei
+2026-02-21 16:41:26,354 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 54796)
+2026-02-21 16:41:26,354 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 54796)
+2026-02-21 16:41:26,631 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:41:26,631 - INFO - [OK] #5 - Tipo: transaccion
+2026-02-21 16:41:26,711 - INFO - [OK] Transacción registrada (ID: 3): ralsei → 3.00 EUR (1234 → 3)
+2026-02-21 16:43:03,072 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 59220)
+2026-02-21 16:43:03,073 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 59220)
+2026-02-21 16:43:03,157 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:43:03,157 - INFO - [OK] #6 - Tipo: login
+2026-02-21 16:43:03,207 - INFO - [OK] Login exitoso: ralsei
+2026-02-21 16:43:10,256 - INFO - [IN] Conexion #7 desde ('127.0.0.1', 59223)
+2026-02-21 16:43:10,256 - INFO - [IN] Conexion #7 desde ('127.0.0.1', 59223)
+2026-02-21 16:43:10,523 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:43:10,523 - INFO - [OK] #7 - Tipo: transaccion
+2026-02-21 16:43:10,597 - INFO - [OK] Transacción registrada (ID: 4): ralsei → 1.00 EUR (2345 → 145)

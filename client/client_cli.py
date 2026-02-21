@@ -149,11 +149,11 @@ class ClienteCLI:
                 "password": password
             }
         )
-        
-        print("\n[*] Preparando mensaje seguro...")
-        print("   |-- Generando NONCE...")
-        print("   |-- Calculando MAC...")
-        print("   |-- Conectando y enviando al servidor...")
+        if self.username_actual == "admin":
+            print("\n[*] ADMIN: Preparando mensaje seguro...")
+            print("   |-- Generando NONCE...")
+            print("   |-- Calculando MAC...")
+            print("   |-- Conectando y enviando al servidor...")
         
         # ✅ Enviar al servidor (reconecta automáticamente)
         respuesta = self.enviar_mensaje(mensaje)
@@ -295,11 +295,11 @@ class ClienteCLI:
                 "cantidad": cantidad
             }
         )
-        
-        print("\n[*] Procesando transferencia segura...")
-        print("   |-- Generando NONCE unico...")
-        print("   |-- Calculando MAC de transaccion...")
-        print("   |-- Conectando y enviando al servidor...")
+        if self.username_actual == "admin":
+            print("\n[*] ADMIN: Procesando transferencia segura...")
+            print("   |-- Generando NONCE unico...")
+            print("   |-- Calculando MAC de transaccion...")
+            print("   |-- Conectando y enviando al servidor...")
         
         # ✅ Enviar al servidor (reconecta automáticamente)
         respuesta = self.enviar_mensaje(mensaje)
@@ -310,7 +310,8 @@ class ClienteCLI:
         
         # Procesar respuesta
         if respuesta.get("status") == "ok":
-            print(f"\n[OK] {respuesta.get('mensaje')}")
+            if self.username_actual == "admin":   
+                print(f"\n[OK] ADMIN: {respuesta.get('mensaje')}")
             print(f"    Transferencia de {cantidad:.2f} EUR completada")
             print("    [OK] Integridad verificada (MAC valido)")
         else:
