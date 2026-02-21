@@ -123,11 +123,8 @@ class ServidorBancario:
                     logger.error(f"[ERROR] Error aceptando conexion: {e}")
     
     def _manejar_cliente(self, conn: socket.socket, addr: tuple, num_conn: int):
-        """
-        Maneja UNA petición y cierra la conexión
-        ✅ OPCIÓN 1: Procesa UN mensaje y cierra
-        """
         try:
+            logger.info(f"[IN] Conexion #{num_conn} desde {addr}")
             # Recibir datos
             datos = conn.recv(4096)
             
@@ -181,7 +178,6 @@ class ServidorBancario:
             logger.error(f"[ERROR] {addr} - Error: {e}", exc_info=True)
         
         finally:
-            # ✅ OPCIÓN 1: SIEMPRE cerrar después de responder
             conn.close()
             logger.debug(f"[CLOSE] #{num_conn} - Conexion cerrada")
     

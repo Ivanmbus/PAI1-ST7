@@ -96,34 +96,6 @@ def verificar_mensaje_completo(
     return True
 
 
-def validar_y_procesar_mensaje(
-    db_manager,
-    clave: bytes,
-    mensaje: bytes,
-    nonce: bytes,
-    mac_recibido: bytes
-) -> Tuple[bool, Optional[str]]:
-    """
-    Versión alternativa que retorna (bool, mensaje_error) en lugar de excepciones
-    
-    Returns:
-        Tuple[bool, Optional[str]]: (es_valido, mensaje_error)
-            - (True, None) si es válido
-            - (False, "descripción del error") si es inválido
-    
-    Ejemplo:
-        >>> valido, error = validar_y_procesar_mensaje(db, clave, msg, nonce, mac)
-        >>> if valido:
-        >>>     procesar_mensaje(msg)
-        >>> else:
-        >>>     enviar_error_al_cliente(error)
-    """
-    try:
-        verificar_mensaje_completo(db_manager, clave, mensaje, nonce, mac_recibido)
-        return True, None
-    except MensajeInvalido as e:
-        return False, str(e)
-
 
 # ===================================================================
 # GESTIÓN DE CONTRASEÑAS (Argon2id)

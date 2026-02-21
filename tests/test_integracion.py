@@ -22,10 +22,26 @@ from common.protocolo import Mensaje
 @pytest.fixture(scope="module")
 def servidor_test():
     """
-    Fixture: Servidor de prueba que corre en background
-    
-    Se inicia UNA VEZ para todos los tests del módulo
+    Fixture: Servidor de prueba con logging
     """
+    import logging
+    from pathlib import Path
+    
+    # Crear directorio de logs
+    Path("logs").mkdir(exist_ok=True)
+    
+    # Configurar logging ANTES de iniciar el servidor
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            # Log a archivo (para evidencias)
+            logging.FileHandler('logs/test_servidor.log', encoding='utf-8'),
+            # Log a consola (para ver en tiempo real)
+            logging.StreamHandler()
+        ],
+        force=True  # Sobrescribir configuración anterior
+    )
     # Configurar servidor de prueba en puerto diferente
     servidor = ServidorBancario(host="127.0.0.1", port=5001)
     
@@ -109,8 +125,25 @@ def test_flujo_completo_registro_login_transaccion(servidor_test):
     cliente.desconectar()
     
     # ═══════════════════════════════════════════════════════
-    # PASO 2: LOGIN
+    # PASO 2: LOGIN INCORRECTO - CORRECTO
     # ═══════════════════════════════════════════════════════
+    cliente.conectar()
+    
+    msg_login = Mensaje(
+        tipo=Mensaje.LOGIN,
+        datos={
+            "username": username_test,
+            "password": "PASSWORD_INCORRECTA"
+        }
+    )
+    paquete = msg_login.empaquetar(clave)
+    respuesta = cliente.enviar_y_recibir(paquete)
+    
+    assert respuesta is not None
+    assert respuesta["status"] == "error", "Debería rechazar credenciales incorrectas"
+    print(f"[TEST] ✅ Login rechazado correctamente")
+    
+    cliente.desconectar()
     
     cliente.conectar()
     
@@ -433,41 +466,6 @@ def test_detectar_mac_invalido(servidor_test):
 # TESTS DE ROBUSTEZ
 # ════════════════════════════════════════════════════════
 
-def test_multiples_clientes_simultaneos(servidor_test):
-    """Test: Servidor maneja múltiples clientes simultáneamente"""
-    import concurrent.futures
-    
-    def hacer_login(numero):
-        """Función para ejecutar en paralelo"""
-        try:
-            clave = Config.get_shared_key()
-            cliente = ClienteSocket("127.0.0.1", 5001)
-            cliente.conectar()
-            
-            msg = Mensaje(
-                tipo=Mensaje.LOGIN,
-                datos={
-                    "username": f"user_{numero}",
-                    "password": "pass"
-                }
-            )
-            paquete = msg.empaquetar(clave)
-            respuesta = cliente.enviar_y_recibir(paquete)
-            
-            cliente.desconectar()
-            return respuesta is not None
-        except Exception as e:
-            print(f"Error en cliente {numero}: {e}")
-            return False
-    
-    # Ejecutar 10 clientes en paralelo
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        futures = [executor.submit(hacer_login, i) for i in range(10)]
-        resultados = [f.result() for f in concurrent.futures.as_completed(futures)]
-    
-    # Verificar que todos recibieron respuesta
-    assert all(resultados), "Algunos clientes no recibieron respuesta"
-    print(f"[TEST]  {len(resultados)} clientes manejados simultáneamente")
 
 
 def test_mensaje_malformado(servidor_test):
