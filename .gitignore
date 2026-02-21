@@ -8,7 +8,8 @@ config/shared_key.key
 *.sqlite
 *.sqlite3
 
-
+# Logs
+logs/server.log
 
 # Python
 __pycache__/

@@ -114,3 +114,27 @@
 2026-02-15 19:11:08,378 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
 2026-02-15 19:11:08,378 - INFO - [OK] #1 - Tipo: login
 2026-02-15 19:11:08,426 - INFO - [OK] Login exitoso: usuario1
+2026-02-21 12:59:49,179 - INFO - ============================================================
+2026-02-21 12:59:49,179 - INFO - 
+2026-02-21 12:59:49,179 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-21 12:59:49,179 - INFO - 
+2026-02-21 12:59:49,179 - INFO - ============================================================
+2026-02-21 12:59:49,179 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-21 12:59:49,179 - INFO - [OK] Base de datos inicializada
+2026-02-21 12:59:49,179 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-21 12:59:49,180 - INFO - [*] Esperando conexiones de clientes...
+2026-02-21 12:59:49,180 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-21 13:00:05,099 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 60490)
+2026-02-21 13:00:05,100 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 60490)
+2026-02-21 13:00:05,111 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 13:00:05,111 - INFO - [OK] #1 - Tipo: login
+2026-02-21 13:00:05,156 - INFO - [OK] Login exitoso: usuario1
+2026-02-21 13:00:33,149 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 60504)
+2026-02-21 13:00:33,150 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 60504)
+2026-02-21 13:00:33,158 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 13:00:33,158 - INFO - [OK] #2 - Tipo: transaccion
+2026-02-21 13:00:33,166 - INFO - [OK] Transacción registrada (ID: 27): usuario1 → 20.00 EUR (ES23353253252 → ES33544554545)
+2026-02-21 13:00:42,195 - INFO - [*] Señal de interrupcion recibida
+2026-02-21 13:00:42,195 - INFO - [STOP] Deteniendo servidor...
+2026-02-21 13:00:42,195 - INFO - [OK] Servidor detenido correctamente
