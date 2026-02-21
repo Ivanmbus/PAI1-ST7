@@ -138,3 +138,69 @@
 2026-02-21 13:00:42,195 - INFO - [*] Señal de interrupcion recibida
 2026-02-21 13:00:42,195 - INFO - [STOP] Deteniendo servidor...
 2026-02-21 13:00:42,195 - INFO - [OK] Servidor detenido correctamente
+2026-02-21 13:18:16,400 - INFO - ============================================================
+2026-02-21 13:18:16,400 - INFO - 
+2026-02-21 13:18:16,400 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-21 13:18:16,400 - INFO - 
+2026-02-21 13:18:16,400 - INFO - ============================================================
+2026-02-21 13:18:16,400 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-21 13:18:16,401 - INFO - [OK] Base de datos inicializada
+2026-02-21 13:18:16,401 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-21 13:18:16,401 - INFO - [*] Esperando conexiones de clientes...
+2026-02-21 13:18:16,401 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-21 13:19:06,742 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 60787)
+2026-02-21 13:19:06,742 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 60787)
+2026-02-21 13:19:06,749 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 13:19:06,749 - INFO - [OK] #1 - Tipo: registro
+2026-02-21 13:20:03,138 - INFO - [*] Señal de interrupcion recibida
+2026-02-21 13:20:03,139 - INFO - [STOP] Deteniendo servidor...
+2026-02-21 13:20:03,139 - INFO - [OK] Servidor detenido correctamente
+2026-02-21 13:27:51,555 - INFO - ============================================================
+2026-02-21 13:27:51,555 - INFO - 
+2026-02-21 13:27:51,555 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-21 13:27:51,555 - INFO - 
+2026-02-21 13:27:51,555 - INFO - ============================================================
+2026-02-21 13:27:51,555 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-21 13:27:51,556 - INFO - [OK] Base de datos inicializada
+2026-02-21 13:27:51,556 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-21 13:27:51,556 - INFO - [*] Esperando conexiones de clientes...
+2026-02-21 13:27:51,556 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-21 13:28:21,832 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 51471)
+2026-02-21 13:28:21,832 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 51471)
+2026-02-21 13:28:21,841 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 13:28:21,841 - INFO - [OK] #1 - Tipo: registro
+2026-02-21 13:29:16,624 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 64410)
+2026-02-21 13:29:16,624 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 64410)
+2026-02-21 13:29:16,640 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 13:29:16,641 - INFO - [OK] #2 - Tipo: registro
+2026-02-21 13:30:09,706 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 64431)
+2026-02-21 13:30:09,707 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 64431)
+2026-02-21 13:30:09,718 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 13:30:09,718 - INFO - [OK] #3 - Tipo: registro
+2026-02-21 13:33:08,965 - INFO - [*] Señal de interrupcion recibida
+2026-02-21 13:33:08,966 - INFO - [STOP] Deteniendo servidor...
+2026-02-21 13:33:08,966 - INFO - [OK] Servidor detenido correctamente
+2026-02-21 13:37:08,860 - INFO - ============================================================
+2026-02-21 13:37:08,860 - INFO - 
+2026-02-21 13:37:08,860 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-21 13:37:08,860 - INFO - 
+2026-02-21 13:37:08,860 - INFO - ============================================================
+2026-02-21 13:37:08,860 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-21 13:37:08,860 - INFO - [OK] Base de datos inicializada
+2026-02-21 13:37:08,861 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-21 13:37:08,861 - INFO - [*] Esperando conexiones de clientes...
+2026-02-21 13:37:08,861 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-21 13:37:42,951 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 55149)
+2026-02-21 13:37:42,951 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 55149)
+2026-02-21 13:37:42,991 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 13:37:42,991 - INFO - [OK] #1 - Tipo: registro
+2026-02-21 13:38:15,835 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 52959)
+2026-02-21 13:38:15,835 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 52959)
+2026-02-21 13:38:15,848 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 13:38:15,848 - INFO - [OK] #2 - Tipo: registro
+2026-02-21 13:39:31,327 - INFO - [*] Señal de interrupcion recibida
+2026-02-21 13:39:31,328 - INFO - [STOP] Deteniendo servidor...
+2026-02-21 13:39:31,328 - INFO - [OK] Servidor detenido correctamente

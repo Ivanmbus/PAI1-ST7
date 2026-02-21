@@ -9,6 +9,7 @@ import logging
 import json
 import signal
 import sys
+import re
 from typing import Optional
 
 from server.database import DatabaseManager
@@ -181,12 +182,42 @@ class ServidorBancario:
             conn.close()
             logger.debug(f"[CLOSE] #{num_conn} - Conexion cerrada")
     
+    def _validar_password(self, password: str) -> tuple[bool, str]:
+        """Valida fortaleza de contraseña"""
+        
+        if len(password) < 12:
+            return False, "La contraseña debe tener al menos 12 caracteres"
+        
+        if password.strip() == "":
+            return False, "La contraseña no puede estar vacía"
+        
+        if not re.search(r'[A-Z]', password):
+            return False, "Debe contener al menos una letra mayúscula (A-Z)"
+        
+        if not re.search(r'[a-z]', password):
+            return False, "Debe contener al menos una letra minúscula (a-z)"
+        
+        if not re.search(r'[0-9]', password):
+            return False, "Debe contener al menos un número (0-9)"
+        
+        if not re.search(r'[!@#$%^&*(),.?":{}|<>_\-+=\[\]\\\/~`]', password):
+            return False, "Debe contener al menos un carácter especial (!@#$%...)"
+        
+        return True, ""
+    
     def _procesar_registro(self, conn, mensaje, addr):
         username = mensaje.datos.get("username")
         password = mensaje.datos.get("password")
         
         if not username or not password:
             self._enviar_error(conn, "Faltan datos de registro")
+            return
+        
+        # ✅ Validar fortaleza
+        password_valida, error_msg = self._validar_password(password)
+        
+        if not password_valida:
+            self._enviar_error(conn, error_msg)
             return
         
         exito, msg = self.autenticacion.registrar(username, password)
