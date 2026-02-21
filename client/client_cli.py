@@ -11,6 +11,7 @@ from typing import Optional
 from client.communicacion import ClienteSocket
 from common.config import Config
 from common.protocolo import Mensaje
+from datetime import datetime, timedelta
 
 # Configurar logging
 logging.basicConfig(
@@ -27,6 +28,7 @@ class ClienteCLI:
         self.host = Config.SERVER_HOST
         self.port = Config.SERVER_PORT
         self.clave_compartida = Config.get_shared_key()
+        self.estado_login: dict[str, dict] = {}
         
         # Estado de sesión (solo local)
         self.username_actual: Optional[str] = None
@@ -174,49 +176,66 @@ class ClienteCLI:
     # ════════════════════════════════════════════════════════
     
     def iniciar_sesion(self) -> bool:
-        """
-        Proceso de inicio de sesión
-        
-        Returns:
-            bool: True si el login fue exitoso
-        """
         print("\n" + "=" * 60)
         print("   INICIAR SESION".center(60))
         print("=" * 60)
         print()
-        
+
         username = input("Nombre de usuario: ").strip()
-        password = getpass("Contraseña: ")
-        
-        # Crear mensaje de login
-        mensaje = Mensaje(
-            tipo=Mensaje.LOGIN,
-            datos={
-                "username": username,
-                "password": password
-            }
-        )
-        
-        print("\n[*] Autenticando...")
-        
-        # ✅ Enviar al servidor (reconecta automáticamente)
-        respuesta = self.enviar_mensaje(mensaje)
-        
-        if not respuesta:
-            print("[ERROR] Error de comunicacion con el servidor")
+        if not username:
+            print("[ERROR] El nombre de usuario no puede estar vacio")
             return False
-        
-        # Procesar respuesta
-        if respuesta.get("status") == "ok":
-            # ✅ Guardar sesión LOCALMENTE
-            self.username_actual = username
-            self.sesion_activa = True
-            print(f"\n[OK] {respuesta.get('mensaje')}")
-            print(f"    Bienvenido, {username}!")
-            return True
-        else:
+
+        if username not in self.estado_login:
+            self.estado_login[username] = {"intentos": 3, "bloqueado_hasta": None}
+
+        estado = self.estado_login[username]
+
+        ahora = datetime.now()
+        if estado["bloqueado_hasta"] and ahora < estado["bloqueado_hasta"]:
+            restante = estado["bloqueado_hasta"] - ahora
+            mins = int(restante.total_seconds() // 60) + 1
+            print(f"[ERROR] Cuenta bloqueada. Intenta de nuevo en ~{mins} minuto(s).")
+            return False
+
+        if estado["bloqueado_hasta"] and ahora >= estado["bloqueado_hasta"]:
+            estado["bloqueado_hasta"] = None
+            estado["intentos"] = 3
+
+        while estado["intentos"] > 0:
+            password = getpass("Contraseña: ")
+
+            mensaje = Mensaje(
+                tipo=Mensaje.LOGIN,
+                datos={"username": username, "password": password}
+            )
+
+            print("\n[*] Autenticando...")
+            respuesta = self.enviar_mensaje(mensaje)
+
+            if not respuesta:
+                print("[ERROR] Error de comunicacion con el servidor ")
+                continue
+
+            if respuesta.get("status") == "ok":
+                estado["intentos"] = 3
+                estado["bloqueado_hasta"] = None
+                self.username_actual = username
+                self.sesion_activa = True
+                print(f"\n[OK] {respuesta.get('mensaje')}")
+                print(f"    Bienvenido, {username}!")
+                return True
+
+            estado["intentos"] -= 1
             print(f"\n[ERROR] {respuesta.get('mensaje')}")
-            return False
+            print(f"    Intentos restantes para '{username}': {estado['intentos']}")
+
+            if estado["intentos"] == 0:
+                estado["bloqueado_hasta"] = datetime.now() + timedelta(minutes=15)
+                print("[ERROR] Demasiados intentos. Cuenta bloqueada 15 minutos.")
+                return False
+
+        return False
     
     # ════════════════════════════════════════════════════════
     # MENÚ DE SESIÓN (USUARIO LOGUEADO)
