@@ -289,3 +289,22 @@
 2026-02-21 16:28:20,676 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
 2026-02-21 16:28:20,677 - INFO - [OK] #2 - Tipo: login
 2026-02-21 16:28:20,736 - INFO - [OK] Login exitoso: ralsei
+2026-02-21 16:32:52,335 - INFO - [*] Señal de interrupcion recibida
+2026-02-21 16:32:52,336 - INFO - [STOP] Deteniendo servidor...
+2026-02-21 16:32:52,336 - INFO - [OK] Servidor detenido correctamente
+2026-02-21 16:32:54,708 - INFO - ============================================================
+2026-02-21 16:32:54,708 - INFO - 
+2026-02-21 16:32:54,708 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-21 16:32:54,708 - INFO - 
+2026-02-21 16:32:54,708 - INFO - ============================================================
+2026-02-21 16:32:54,708 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-21 16:32:54,708 - INFO - [OK] Base de datos inicializada
+2026-02-21 16:32:54,708 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-21 16:32:54,708 - INFO - [*] Esperando conexiones de clientes...
+2026-02-21 16:32:54,708 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-21 16:33:54,776 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 50959)
+2026-02-21 16:33:54,776 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 50959)
+2026-02-21 16:33:54,865 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:33:54,865 - INFO - [OK] #1 - Tipo: login
+2026-02-21 16:33:54,932 - INFO - [OK] Login exitoso: ralsei
