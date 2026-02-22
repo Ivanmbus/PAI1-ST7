@@ -1,117 +1,167 @@
-2026-02-21 12:54:54,305 - INFO - ============================================================
-2026-02-21 12:54:54,305 - INFO - 
-2026-02-21 12:54:54,305 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5001
-2026-02-21 12:54:54,306 - INFO - 
-2026-02-21 12:54:54,306 - INFO - ============================================================
-2026-02-21 12:54:54,306 - INFO - [OK] Clave compartida cargada correctamente
-2026-02-21 12:54:54,306 - INFO - [OK] Base de datos inicializada
-2026-02-21 12:54:54,306 - INFO - [OK] Modo: UNA PETICION POR CONEXION
-2026-02-21 12:54:54,306 - INFO - [*] Esperando conexiones de clientes...
-2026-02-21 12:54:54,306 - INFO - [*] Presiona Ctrl+C para detener
+2026-02-22 12:59:17,482 - INFO - ============================================================
+2026-02-22 12:59:17,482 - INFO - 
+2026-02-22 12:59:17,482 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5001
+2026-02-22 12:59:17,482 - INFO - 
+2026-02-22 12:59:17,482 - INFO - ============================================================
+2026-02-22 12:59:17,482 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-22 12:59:17,482 - INFO - [OK] Base de datos inicializada
+2026-02-22 12:59:17,482 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-22 12:59:17,483 - INFO - [*] Esperando conexiones de clientes...
+2026-02-22 12:59:17,483 - INFO - [*] Presiona Ctrl+C para detener
 
-2026-02-21 12:54:56,305 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 61595)
-2026-02-21 12:54:56,306 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 61595)
-2026-02-21 12:54:56,306 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,306 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 61596)
-2026-02-21 12:54:56,306 - WARNING - [WARNING] ('127.0.0.1', 61595) - Conexion cerrada sin datos
-2026-02-21 12:54:56,307 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 61596)
-2026-02-21 12:54:56,313 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,313 - INFO - [OK] #2 - Tipo: registro
-2026-02-21 12:54:56,363 - INFO - [OK] Usuario registrado: test_user_1771674896
-2026-02-21 12:54:56,364 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,364 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,364 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 61597)
-2026-02-21 12:54:56,365 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 61597)
-2026-02-21 12:54:56,371 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,371 - INFO - [OK] #3 - Tipo: login
-2026-02-21 12:54:56,416 - WARNING - [WARNING]  Contraseña incorrecta para usuario: test_user_1771674896
-2026-02-21 12:54:56,417 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,418 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,418 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 61598)
-2026-02-21 12:54:56,418 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 61598)
-2026-02-21 12:54:56,426 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,426 - INFO - [OK] #4 - Tipo: login
-2026-02-21 12:54:56,471 - INFO - [OK] Login exitoso: test_user_1771674896
-2026-02-21 12:54:56,472 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,472 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,473 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 61599)
-2026-02-21 12:54:56,473 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 61599)
-2026-02-21 12:54:56,479 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,479 - INFO - [OK] #5 - Tipo: transaccion
-2026-02-21 12:54:56,485 - INFO - [OK] Transacción registrada (ID: 24): test_user_1771674896 → 100.50 EUR (ES1234567890 → ES0987654321)
-2026-02-21 12:54:56,485 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,485 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,485 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 61600)
-2026-02-21 12:54:56,486 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 61600)
-2026-02-21 12:54:56,494 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,494 - INFO - [OK] #6 - Tipo: transaccion
-2026-02-21 12:54:56,499 - INFO - [OK] Transacción registrada (ID: 25): test_user_1771674896 → 250.75 EUR (ES1111111111 → ES2222222222)
-2026-02-21 12:54:56,499 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,501 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,501 - INFO - [IN] Conexion #7 desde ('127.0.0.1', 61601)
-2026-02-21 12:54:56,501 - INFO - [IN] Conexion #7 desde ('127.0.0.1', 61601)
-2026-02-21 12:54:56,507 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,507 - INFO - [OK] #7 - Tipo: login
-2026-02-21 12:54:56,508 - WARNING - [WARNING]  Intento de login con usuario inexistente: usuario_inexistente
-2026-02-21 12:54:56,509 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,510 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,510 - INFO - [IN] Conexion #8 desde ('127.0.0.1', 61602)
-2026-02-21 12:54:56,510 - INFO - [IN] Conexion #8 desde ('127.0.0.1', 61602)
-2026-02-21 12:54:56,517 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,518 - INFO - [OK] #8 - Tipo: registro
-2026-02-21 12:54:56,570 - INFO - [OK] Usuario registrado: test_dup_1771674896
-2026-02-21 12:54:56,570 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,570 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,570 - INFO - [IN] Conexion #9 desde ('127.0.0.1', 61603)
-2026-02-21 12:54:56,571 - INFO - [IN] Conexion #9 desde ('127.0.0.1', 61603)
-2026-02-21 12:54:56,576 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,577 - INFO - [OK] #9 - Tipo: registro
-2026-02-21 12:54:56,578 - WARNING - [WARNING]  Intento de registro con usuario existente: test_dup_1771674896
-2026-02-21 12:54:56,578 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,579 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,579 - INFO - [IN] Conexion #10 desde ('127.0.0.1', 61604)
-2026-02-21 12:54:56,580 - INFO - [IN] Conexion #10 desde ('127.0.0.1', 61604)
-2026-02-21 12:54:56,585 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,585 - INFO - [OK] #10 - Tipo: registro
-2026-02-21 12:54:56,634 - INFO - [OK] Usuario registrado: test_replay_1771674896
-2026-02-21 12:54:56,635 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,635 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,635 - INFO - [IN] Conexion #11 desde ('127.0.0.1', 61605)
-2026-02-21 12:54:56,636 - INFO - [IN] Conexion #11 desde ('127.0.0.1', 61605)
-2026-02-21 12:54:56,643 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,643 - INFO - [OK] #11 - Tipo: login
-2026-02-21 12:54:56,685 - INFO - [OK] Login exitoso: test_replay_1771674896
-2026-02-21 12:54:56,686 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,687 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,687 - INFO - [IN] Conexion #12 desde ('127.0.0.1', 61606)
-2026-02-21 12:54:56,687 - INFO - [IN] Conexion #12 desde ('127.0.0.1', 61606)
-2026-02-21 12:54:56,693 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,693 - INFO - [OK] #12 - Tipo: transaccion
-2026-02-21 12:54:56,698 - INFO - [OK] Transacción registrada (ID: 26): test_replay_1771674896 → 100.00 EUR (ES1234567890123456789012 → ES9876543210987654321098)
-2026-02-21 12:54:56,699 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,699 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,699 - INFO - [IN] Conexion #13 desde ('127.0.0.1', 61607)
-2026-02-21 12:54:56,700 - INFO - [IN] Conexion #13 desde ('127.0.0.1', 61607)
-2026-02-21 12:54:56,701 - WARNING - [ERROR] NONCE duplicado detectado - REPLAY ATTACK! NONCE: 22401f25a64ebe7a...
-2026-02-21 12:54:56,701 - WARNING - [ALERT] ('127.0.0.1', 61607) - Mensaje rechazado: NONCE ya usado - Replay attack detectado
-2026-02-21 12:54:56,701 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,704 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,704 - INFO - [IN] Conexion #14 desde ('127.0.0.1', 61608)
-2026-02-21 12:54:56,704 - INFO - [IN] Conexion #14 desde ('127.0.0.1', 61608)
-2026-02-21 12:54:56,705 - WARNING - [ERROR] MAC inválido - Posible ataque Man-in-the-Middle
-2026-02-21 12:54:56,705 - WARNING - [ALERT] ('127.0.0.1', 61608) - Mensaje rechazado: MAC inválido - Integridad comprometida
-2026-02-21 12:54:56,705 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,706 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,706 - INFO - [IN] Conexion #15 desde ('127.0.0.1', 61609)
-2026-02-21 12:54:56,706 - INFO - [IN] Conexion #15 desde ('127.0.0.1', 61609)
-2026-02-21 12:54:56,706 - ERROR - [ERROR] ('127.0.0.1', 61609) - Error al desempaquetar: Expecting value: line 1 column 1 (char 0)
-2026-02-21 12:54:56,706 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,707 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
-2026-02-21 12:54:56,707 - INFO - [IN] Conexion #16 desde ('127.0.0.1', 61610)
-2026-02-21 12:54:56,708 - INFO - [IN] Conexion #16 desde ('127.0.0.1', 61610)
-2026-02-21 12:54:56,713 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-21 12:54:56,713 - INFO - [OK] #16 - Tipo: registro
-2026-02-21 12:54:56,763 - INFO - [OK] Usuario registrado: test_persist_1771674896
-2026-02-21 12:54:56,764 - INFO - 🔌 Desconectado del servidor
-2026-02-21 12:54:56,767 - INFO - [STOP] Deteniendo servidor...
-2026-02-21 12:54:56,767 - INFO - [OK] Servidor detenido correctamente
+2026-02-22 12:59:19,482 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 55655)
+2026-02-22 12:59:19,483 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 55655)
+2026-02-22 12:59:19,483 - WARNING - [WARNING] ('127.0.0.1', 55655) - Conexion cerrada sin datos
+2026-02-22 12:59:19,483 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,484 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 55656)
+2026-02-22 12:59:19,484 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 55656)
+2026-02-22 12:59:19,494 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,494 - INFO - [OK] #2 - Tipo: registro
+2026-02-22 12:59:19,550 - INFO - [OK] Usuario registrado: test_user_1771761559
+2026-02-22 12:59:19,551 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,551 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,551 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 55657)
+2026-02-22 12:59:19,552 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 55657)
+2026-02-22 12:59:19,557 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,557 - INFO - [OK] #3 - Tipo: login
+2026-02-22 12:59:19,609 - WARNING - [WARNING]  Contraseña incorrecta para usuario: test_user_1771761559
+2026-02-22 12:59:19,609 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,610 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,610 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 55658)
+2026-02-22 12:59:19,610 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 55658)
+2026-02-22 12:59:19,616 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,616 - INFO - [OK] #4 - Tipo: login
+2026-02-22 12:59:19,663 - INFO - [OK] Login exitoso: test_user_1771761559
+2026-02-22 12:59:19,663 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,664 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,664 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 55659)
+2026-02-22 12:59:19,664 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 55659)
+2026-02-22 12:59:19,672 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,673 - INFO - [OK] #5 - Tipo: transaccion
+2026-02-22 12:59:19,678 - INFO - [OK] Transacción registrada (ID: 43): test_user_1771761559 → 100.50 EUR (ES1234567890 → ES0987654321)
+2026-02-22 12:59:19,678 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,678 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,678 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 55660)
+2026-02-22 12:59:19,679 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 55660)
+2026-02-22 12:59:19,685 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,685 - INFO - [OK] #6 - Tipo: transaccion
+2026-02-22 12:59:19,691 - INFO - [OK] Transacción registrada (ID: 44): test_user_1771761559 → 250.75 EUR (ES1111111111 → ES2222222222)
+2026-02-22 12:59:19,691 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,692 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,693 - INFO - [IN] Conexion #7 desde ('127.0.0.1', 55661)
+2026-02-22 12:59:19,693 - INFO - [IN] Conexion #7 desde ('127.0.0.1', 55661)
+2026-02-22 12:59:19,701 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,701 - INFO - [OK] #7 - Tipo: login
+2026-02-22 12:59:19,702 - WARNING - [WARNING]  Intento de login con usuario inexistente: usuario_inexistente
+2026-02-22 12:59:19,702 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,704 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,704 - INFO - [IN] Conexion #8 desde ('127.0.0.1', 55662)
+2026-02-22 12:59:19,704 - INFO - [IN] Conexion #8 desde ('127.0.0.1', 55662)
+2026-02-22 12:59:19,710 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,710 - INFO - [OK] #8 - Tipo: registro
+2026-02-22 12:59:19,766 - INFO - [OK] Usuario registrado: test_dup_1771761559
+2026-02-22 12:59:19,766 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,767 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,767 - INFO - [IN] Conexion #9 desde ('127.0.0.1', 55663)
+2026-02-22 12:59:19,767 - INFO - [IN] Conexion #9 desde ('127.0.0.1', 55663)
+2026-02-22 12:59:19,775 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,775 - INFO - [OK] #9 - Tipo: registro
+2026-02-22 12:59:19,776 - WARNING - [WARNING]  Intento de registro con usuario existente: test_dup_1771761559
+2026-02-22 12:59:19,777 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,778 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,778 - INFO - [IN] Conexion #10 desde ('127.0.0.1', 55664)
+2026-02-22 12:59:19,778 - INFO - [IN] Conexion #10 desde ('127.0.0.1', 55664)
+2026-02-22 12:59:19,783 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,783 - INFO - [OK] #10 - Tipo: registro
+2026-02-22 12:59:19,836 - INFO - [OK] Usuario registrado: test_replay_1771761559
+2026-02-22 12:59:19,836 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,836 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,837 - INFO - [IN] Conexion #11 desde ('127.0.0.1', 55665)
+2026-02-22 12:59:19,837 - INFO - [IN] Conexion #11 desde ('127.0.0.1', 55665)
+2026-02-22 12:59:19,845 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,845 - INFO - [OK] #11 - Tipo: login
+2026-02-22 12:59:19,890 - INFO - [OK] Login exitoso: test_replay_1771761559
+2026-02-22 12:59:19,891 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,891 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,892 - INFO - [IN] Conexion #12 desde ('127.0.0.1', 55666)
+2026-02-22 12:59:19,892 - INFO - [IN] Conexion #12 desde ('127.0.0.1', 55666)
+2026-02-22 12:59:19,898 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,898 - INFO - [OK] #12 - Tipo: transaccion
+2026-02-22 12:59:19,903 - INFO - [OK] Transacción registrada (ID: 45): test_replay_1771761559 → 100.00 EUR (ES1234567890123456789012 → ES9876543210987654321098)
+2026-02-22 12:59:19,903 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,903 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,903 - INFO - [IN] Conexion #13 desde ('127.0.0.1', 55667)
+2026-02-22 12:59:19,904 - INFO - [IN] Conexion #13 desde ('127.0.0.1', 55667)
+2026-02-22 12:59:19,905 - WARNING - [ERROR] NONCE duplicado detectado - REPLAY ATTACK! NONCE: 279cfb5ba005e3e2...
+2026-02-22 12:59:19,905 - WARNING - [ALERT] ('127.0.0.1', 55667) - Mensaje rechazado: NONCE ya usado - Replay attack detectado
+2026-02-22 12:59:19,905 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,908 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,908 - INFO - [IN] Conexion #14 desde ('127.0.0.1', 55668)
+2026-02-22 12:59:19,909 - INFO - [IN] Conexion #14 desde ('127.0.0.1', 55668)
+2026-02-22 12:59:19,909 - WARNING - [ERROR] MAC inválido - Posible ataque Man-in-the-Middle
+2026-02-22 12:59:19,909 - WARNING - [ALERT] ('127.0.0.1', 55668) - Mensaje rechazado: MAC inválido - Integridad comprometida
+2026-02-22 12:59:19,909 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,910 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,910 - INFO - [IN] Conexion #15 desde ('127.0.0.1', 55669)
+2026-02-22 12:59:19,911 - INFO - [IN] Conexion #15 desde ('127.0.0.1', 55669)
+2026-02-22 12:59:19,911 - ERROR - [ERROR] ('127.0.0.1', 55669) - Error al desempaquetar: Expecting value: line 1 column 1 (char 0)
+2026-02-22 12:59:19,911 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,912 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,912 - INFO - [IN] Conexion #16 desde ('127.0.0.1', 55670)
+2026-02-22 12:59:19,912 - INFO - [IN] Conexion #16 desde ('127.0.0.1', 55670)
+2026-02-22 12:59:19,920 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,920 - INFO - [OK] #16 - Tipo: registro
+2026-02-22 12:59:19,973 - INFO - [OK] Usuario registrado: test_persist_1771761559
+2026-02-22 12:59:19,973 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:19,977 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:19,977 - INFO - [IN] Conexion #17 desde ('127.0.0.1', 55671)
+2026-02-22 12:59:19,977 - INFO - [IN] Conexion #17 desde ('127.0.0.1', 55671)
+2026-02-22 12:59:19,982 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:19,982 - INFO - [OK] #17 - Tipo: registro
+2026-02-22 12:59:20,035 - INFO - [OK] Usuario registrado: test_brute_1771761559
+2026-02-22 12:59:20,035 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:20,036 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:20,036 - INFO - [IN] Conexion #18 desde ('127.0.0.1', 55672)
+2026-02-22 12:59:20,036 - INFO - [IN] Conexion #18 desde ('127.0.0.1', 55672)
+2026-02-22 12:59:20,044 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:20,044 - INFO - [OK] #18 - Tipo: login
+2026-02-22 12:59:20,089 - WARNING - [WARNING]  Contraseña incorrecta para usuario: test_brute_1771761559
+2026-02-22 12:59:20,090 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:20,090 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:20,090 - INFO - [IN] Conexion #19 desde ('127.0.0.1', 55673)
+2026-02-22 12:59:20,090 - INFO - [IN] Conexion #19 desde ('127.0.0.1', 55673)
+2026-02-22 12:59:20,096 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:20,097 - INFO - [OK] #19 - Tipo: login
+2026-02-22 12:59:20,139 - WARNING - [WARNING]  Contraseña incorrecta para usuario: test_brute_1771761559
+2026-02-22 12:59:20,140 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:20,140 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:20,140 - INFO - [IN] Conexion #20 desde ('127.0.0.1', 55674)
+2026-02-22 12:59:20,141 - INFO - [IN] Conexion #20 desde ('127.0.0.1', 55674)
+2026-02-22 12:59:20,146 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:20,147 - INFO - [OK] #20 - Tipo: login
+2026-02-22 12:59:20,189 - WARNING - [WARNING]  Contraseña incorrecta para usuario: test_brute_1771761559
+2026-02-22 12:59:20,189 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:20,189 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:20,189 - INFO - [IN] Conexion #21 desde ('127.0.0.1', 55675)
+2026-02-22 12:59:20,190 - INFO - [IN] Conexion #21 desde ('127.0.0.1', 55675)
+2026-02-22 12:59:20,197 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:20,197 - INFO - [OK] #21 - Tipo: login
+2026-02-22 12:59:20,238 - WARNING - [WARNING]  Contraseña incorrecta para usuario: test_brute_1771761559
+2026-02-22 12:59:20,239 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:20,239 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:20,239 - INFO - [IN] Conexion #22 desde ('127.0.0.1', 55676)
+2026-02-22 12:59:20,239 - INFO - [IN] Conexion #22 desde ('127.0.0.1', 55676)
+2026-02-22 12:59:20,245 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:20,245 - INFO - [OK] #22 - Tipo: login
+2026-02-22 12:59:20,287 - WARNING - [WARNING]  Contraseña incorrecta para usuario: test_brute_1771761559
+2026-02-22 12:59:20,287 - WARNING - 🚨 [BRUTE_FORCE] Usuario 'test_brute_1771761559' bloqueado por 5 intentos fallidos
+2026-02-22 12:59:20,288 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:20,288 - INFO - [OK]Conectado al servidor 127.0.0.1:5001
+2026-02-22 12:59:20,288 - INFO - [IN] Conexion #23 desde ('127.0.0.1', 55677)
+2026-02-22 12:59:20,288 - INFO - [IN] Conexion #23 desde ('127.0.0.1', 55677)
+2026-02-22 12:59:20,294 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:59:20,294 - INFO - [OK] #23 - Tipo: login
+2026-02-22 12:59:20,294 - WARNING - 🚨 [BLOCKED] Intento de login bloqueado: test_brute_1771761559 desde ('127.0.0.1', 55677)
+2026-02-22 12:59:20,294 - INFO - 🔌 Desconectado del servidor
+2026-02-22 12:59:20,295 - INFO - [STOP] Deteniendo servidor...
+2026-02-22 12:59:20,295 - INFO - [OK] Servidor detenido correctamente

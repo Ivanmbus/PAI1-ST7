@@ -3,6 +3,8 @@
 Servidor principal - Maneja UNA petición por conexión
 OPCIÓN 1: Cierra después de cada respuesta
 """
+from collections import defaultdict
+from datetime import datetime, timedelta
 import socket
 import threading
 import logging
@@ -42,6 +44,15 @@ class ServidorBancario:
         self.socket_servidor: Optional[socket.socket] = None
         self.activo = False
         
+        # ✅ Protección anti-fuerza bruta en SERVIDOR
+        self.intentos_login = defaultdict(lambda: {
+            "intentos": 0,
+            "bloqueado_hasta": None,
+            "ultimo_intento": None
+        })
+        self.MAX_INTENTOS_LOGIN = 5
+        self.TIEMPO_BLOQUEO = timedelta(minutes=15)
+        self.VENTANA_INTENTOS = timedelta(minutes=5)
         # Registrar manejador de señales
         signal.signal(signal.SIGINT, self._signal_handler)
         if hasattr(signal, 'SIGBREAK'):
@@ -297,6 +308,95 @@ class ServidorBancario:
                 logger.error(f"[ERROR] Error cerrando socket: {e}")
         
         logger.info("[OK] Servidor detenido correctamente")
+
+    def _verificar_rate_limit_login(self, username: str) -> tuple[bool, str]:
+        """
+        Verifica si el usuario está bloqueado por demasiados intentos
+        
+        Returns:
+            tuple[bool, str]: (puede_intentar, mensaje_error)
+        """
+        ahora = datetime.now()
+        estado = self.intentos_login[username]
+        
+        # Verificar si está bloqueado
+        if estado["bloqueado_hasta"] and ahora < estado["bloqueado_hasta"]:
+            tiempo_restante = estado["bloqueado_hasta"] - ahora
+            minutos = int(tiempo_restante.total_seconds() / 60) + 1
+            return False, f"Usuario bloqueado. Intenta en {minutos} minuto(s)"
+        
+        # Si el bloqueo expiró, resetear
+        if estado["bloqueado_hasta"] and ahora >= estado["bloqueado_hasta"]:
+            estado["intentos"] = 0
+            estado["bloqueado_hasta"] = None
+        
+        # Resetear contador si pasó la ventana de tiempo
+        if estado["ultimo_intento"]:
+            tiempo_desde_ultimo = ahora - estado["ultimo_intento"]
+            if tiempo_desde_ultimo > self.VENTANA_INTENTOS:
+                estado["intentos"] = 0
+        
+        return True, ""
+
+    def _registrar_intento_login(self, username: str, exitoso: bool):
+        """Registra un intento de login (exitoso o fallido)"""
+        ahora = datetime.now()
+        estado = self.intentos_login[username]
+        
+        if exitoso:
+            # Login exitoso: resetear contador
+            estado["intentos"] = 0
+            estado["bloqueado_hasta"] = None
+            estado["ultimo_intento"] = ahora
+        else:
+            # Login fallido: incrementar contador
+            estado["intentos"] += 1
+            estado["ultimo_intento"] = ahora
+            
+            # Bloquear si alcanzó el límite
+            if estado["intentos"] >= self.MAX_INTENTOS_LOGIN:
+                estado["bloqueado_hasta"] = ahora + self.TIEMPO_BLOQUEO
+                logger.warning(
+                    f"🚨 [BRUTE_FORCE] Usuario '{username}' bloqueado "
+                    f"por {self.MAX_INTENTOS_LOGIN} intentos fallidos"
+                )
+
+    def _procesar_login(self, conn, mensaje, addr):
+        """Procesa solicitud de login CON protección anti-fuerza bruta"""
+        username = mensaje.datos.get("username")
+        password = mensaje.datos.get("password")
+        
+        if not username or not password:
+            self._enviar_error(conn, "Faltan credenciales")
+            return
+        
+        # ✅ VERIFICAR RATE LIMIT
+        puede_intentar, mensaje_error = self._verificar_rate_limit_login(username)
+        
+        if not puede_intentar:
+            logger.warning(f"🚨 [BLOCKED] Intento de login bloqueado: {username} desde {addr}")
+            self._enviar_error(conn, mensaje_error)
+            return
+        
+        # Procesar login
+        exito, msg = self.autenticacion.login(username, password)
+        
+        # ✅ REGISTRAR INTENTO
+        self._registrar_intento_login(username, exito)
+        
+        if exito:
+            self._enviar_ok(conn, msg)
+        else:
+            # Informar intentos restantes
+            estado = self.intentos_login[username]
+            restantes = self.MAX_INTENTOS_LOGIN - estado["intentos"]
+            
+            if restantes > 0:
+                msg_completo = f"{msg}. Intentos restantes: {restantes}"
+            else:
+                msg_completo = f"{msg}. Usuario bloqueado por {int(self.TIEMPO_BLOQUEO.total_seconds() / 60)} minutos"
+            
+            self._enviar_error(conn, msg_completo)
 
 
 def main():

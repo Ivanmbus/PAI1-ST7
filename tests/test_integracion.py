@@ -14,6 +14,9 @@ from server.server import ServidorBancario
 from client.communicacion import ClienteSocket
 from common.config import Config
 from common.protocolo import Mensaje
+from unittest.mock import Mock, patch
+from client.client_cli import ClienteCLI
+from datetime import datetime, timedelta
 
 # ════════════════════════════════════════════════════════
 # FIXTURES
@@ -112,7 +115,7 @@ def test_flujo_completo_registro_login_transaccion(servidor_test):
         tipo=Mensaje.REGISTRO,
         datos={
             "username": username_test,
-            "password": "test_pass_123!"
+            "password": "Correct_pass1!"
         }
     )
     paquete = msg_registro.empaquetar(clave)
@@ -151,7 +154,7 @@ def test_flujo_completo_registro_login_transaccion(servidor_test):
         tipo=Mensaje.LOGIN,
         datos={
             "username": username_test,
-            "password": "test_pass_123!"
+            "password": "Correct_pass1!"
         }
     )
     paquete = msg_login.empaquetar(clave)
@@ -249,7 +252,7 @@ def test_registro_usuario_duplicado(servidor_test):
         tipo=Mensaje.REGISTRO,
         datos={
             "username": username_test,
-            "password": "pass123"
+            "password": "Correct_pass1"
         }
     )
     paquete = msg_registro.empaquetar(clave)
@@ -305,7 +308,7 @@ def test_detectar_replay_attack_transaccion(servidor_test):
         tipo=Mensaje.REGISTRO,
         datos={
             "username": username_test,
-            "password": "pass123"
+            "password": "Correct_pass1"
         }
     )
     paquete = msg_registro.empaquetar(clave)
@@ -324,7 +327,7 @@ def test_detectar_replay_attack_transaccion(servidor_test):
         tipo=Mensaje.LOGIN,
         datos={
             "username": username_test,
-            "password": "pass123"
+            "password": "Correct_pass1"
         }
     )
     paquete = msg_login.empaquetar(clave)
@@ -379,7 +382,6 @@ def test_detectar_replay_attack_transaccion(servidor_test):
     respuesta2 = cliente.enviar_y_recibir(paquete_transaccion)
     
     cliente.desconectar()
-    
     # ═══════════════════════════════════════════════════════════
     # VERIFICACIÓN: El servidor DEBE rechazar el replay
     # ═══════════════════════════════════════════════════════════
@@ -509,7 +511,7 @@ def test_datos_persisten_en_base_de_datos(servidor_test):
         tipo=Mensaje.REGISTRO,
         datos={
             "username": username_test,
-            "password": "persist_pass"
+            "password": "Correct_pass1"
         }
     )
     paquete = msg_registro.empaquetar(clave)
@@ -526,6 +528,106 @@ def test_datos_persisten_en_base_de_datos(servidor_test):
     
     print(f"[TEST] ✅ Datos persisten correctamente en BD")
 
+# ════════════════════════════════════════════════════════
+# TEST ATAQUE DE FUERZA BRUTA EN LOGIN
+# ════════════════════════════════════════════════════════
+
+def test_servidor_bloquea_fuerza_bruta_login(servidor_test):
+    """
+    Test: SERVIDOR bloquea intentos de fuerza bruta en login
+    
+    Verifica que después de X intentos fallidos, el servidor
+    bloquea el usuario temporalmente.
+    """
+    import time
+    clave = Config.get_shared_key()
+    username_test = f"test_brute_{int(time.time())}"
+    
+    # ═══════════════════════════════════════════════════════
+    # PREPARACIÓN: Registrar usuario
+    # ═══════════════════════════════════════════════════════
+    
+    cliente = ClienteSocket("127.0.0.1", 5001)
+    cliente.conectar()
+    
+    msg_registro = Mensaje(
+        tipo=Mensaje.REGISTRO,
+        datos={
+            "username": username_test,
+            "password": "Correct_Pass123!"
+        }
+    )
+    paquete = msg_registro.empaquetar(clave)
+    respuesta = cliente.enviar_y_recibir(paquete)
+    assert respuesta["status"] == "ok", "Registro falló"
+    
+    cliente.desconectar()
+    
+    print(f"\n[TEST] Usuario '{username_test}' registrado correctamente")
+    
+    # ═══════════════════════════════════════════════════════
+    # ATAQUE: Intentar login con contraseña incorrecta 5 veces
+    # ═══════════════════════════════════════════════════════
+    
+    msg_login = Mensaje(
+        tipo=Mensaje.LOGIN,
+        datos={
+            "username": username_test,
+            "password": "Wrong_Password_123!"  # ← Incorrecta
+        }
+    )
+    
+    intentos_rechazados = 0
+    
+    for i in range(6):  # Intentar 6 veces (límite es 5)
+        # Nueva conexión por cada intento
+        cliente = ClienteSocket("127.0.0.1", 5001)
+        cliente.conectar()
+        
+        paquete = msg_login.empaquetar(clave)
+        respuesta = cliente.enviar_y_recibir(paquete)
+        
+        cliente.desconectar()
+        
+        print(f"[TEST] Intento #{i+1}: {respuesta['mensaje']}")
+        
+        assert respuesta["status"] == "error"
+        
+        if "bloqueado" in respuesta["mensaje"].lower():
+            print(f"[TEST] ✅ Usuario bloqueado en intento #{i+1}")
+            intentos_rechazados = i + 1
+            break
+    
+    # Verificar que se bloqueó
+    assert intentos_rechazados > 0, "El servidor NO bloqueó después de intentos fallidos"
+    assert intentos_rechazados <= 6, "Debería haberse bloqueado en 6 intentos o menos"
+    
+    # ═══════════════════════════════════════════════════════
+    # VERIFICAR: Siguiente intento también es rechazado
+    # ═══════════════════════════════════════════════════════
+    
+    cliente = ClienteSocket("127.0.0.1", 5001)
+    cliente.conectar()
+    
+    # Intentar con la CONTRASEÑA CORRECTA (debería seguir bloqueado)
+    msg_login_correcto = Mensaje(
+        tipo=Mensaje.LOGIN,
+        datos={
+            "username": username_test,
+            "password": "Correct_Pass123!"  # ← CORRECTA
+        }
+    )
+    paquete = msg_login_correcto.empaquetar(clave)
+    respuesta = cliente.enviar_y_recibir(paquete)
+    
+    cliente.desconectar()
+    
+    # Debería estar bloqueado incluso con password correcta
+    assert respuesta["status"] == "error"
+    assert "bloqueado" in respuesta["mensaje"].lower()
+    
+    print(f"[TEST] ✅ Usuario sigue bloqueado incluso con password correcta")
+    print(f"[TEST] ✅ Protección anti-fuerza bruta funciona correctamente")
 
 # ════════════════════════════════════════════════════════
 # EJECUTAR TODOS LOS TESTS

@@ -204,3 +204,87 @@
 2026-02-21 13:39:31,327 - INFO - [*] Señal de interrupcion recibida
 2026-02-21 13:39:31,328 - INFO - [STOP] Deteniendo servidor...
 2026-02-21 13:39:31,328 - INFO - [OK] Servidor detenido correctamente
+2026-02-22 12:53:51,902 - INFO - ============================================================
+2026-02-22 12:53:51,902 - INFO - 
+2026-02-22 12:53:51,902 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-22 12:53:51,902 - INFO - 
+2026-02-22 12:53:51,902 - INFO - ============================================================
+2026-02-22 12:53:51,902 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-22 12:53:51,902 - INFO - [OK] Base de datos inicializada
+2026-02-22 12:53:51,902 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-22 12:53:51,903 - INFO - [*] Esperando conexiones de clientes...
+2026-02-22 12:53:51,903 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-22 12:54:12,887 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 61948)
+2026-02-22 12:54:12,887 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 61948)
+2026-02-22 12:54:12,895 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:54:12,895 - INFO - [OK] #1 - Tipo: login
+2026-02-22 12:54:12,943 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
+2026-02-22 12:54:29,223 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 61955)
+2026-02-22 12:54:29,224 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 61955)
+2026-02-22 12:54:29,229 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:54:29,229 - INFO - [OK] #2 - Tipo: login
+2026-02-22 12:54:29,277 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
+2026-02-22 12:54:43,006 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 61960)
+2026-02-22 12:54:43,007 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 61960)
+2026-02-22 12:54:43,015 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:54:43,015 - INFO - [OK] #3 - Tipo: login
+2026-02-22 12:54:43,061 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
+2026-02-22 12:54:50,336 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 61965)
+2026-02-22 12:54:50,337 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 61965)
+2026-02-22 12:54:50,349 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:54:50,349 - INFO - [OK] #4 - Tipo: login
+2026-02-22 12:54:50,396 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
+2026-02-22 12:55:00,723 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 61970)
+2026-02-22 12:55:00,724 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 61970)
+2026-02-22 12:55:00,732 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:55:00,732 - INFO - [OK] #5 - Tipo: login
+2026-02-22 12:55:00,782 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
+2026-02-22 12:56:11,305 - INFO - [*] Señal de interrupcion recibida
+2026-02-22 12:56:11,305 - INFO - [STOP] Deteniendo servidor...
+2026-02-22 12:56:11,305 - INFO - [OK] Servidor detenido correctamente
+2026-02-22 12:56:12,759 - INFO - ============================================================
+2026-02-22 12:56:12,759 - INFO - 
+2026-02-22 12:56:12,759 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-22 12:56:12,759 - INFO - 
+2026-02-22 12:56:12,759 - INFO - ============================================================
+2026-02-22 12:56:12,760 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-22 12:56:12,760 - INFO - [OK] Base de datos inicializada
+2026-02-22 12:56:12,760 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-22 12:56:12,760 - INFO - [*] Esperando conexiones de clientes...
+2026-02-22 12:56:12,760 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-22 12:56:22,523 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 60711)
+2026-02-22 12:56:22,523 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 60711)
+2026-02-22 12:56:22,532 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:56:22,532 - INFO - [OK] #1 - Tipo: login
+2026-02-22 12:56:22,582 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
+2026-02-22 12:56:26,767 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 60713)
+2026-02-22 12:56:26,768 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 60713)
+2026-02-22 12:56:26,777 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:56:26,777 - INFO - [OK] #2 - Tipo: login
+2026-02-22 12:56:26,826 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
+2026-02-22 12:56:30,663 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 60716)
+2026-02-22 12:56:30,663 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 60716)
+2026-02-22 12:56:30,671 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:56:30,671 - INFO - [OK] #3 - Tipo: login
+2026-02-22 12:56:30,720 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
+2026-02-22 12:56:40,608 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 64984)
+2026-02-22 12:56:40,608 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 64984)
+2026-02-22 12:56:40,619 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:56:40,619 - INFO - [OK] #4 - Tipo: login
+2026-02-22 12:56:40,666 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
+2026-02-22 12:56:47,822 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 64994)
+2026-02-22 12:56:47,823 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 64994)
+2026-02-22 12:56:47,833 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:56:47,833 - INFO - [OK] #5 - Tipo: login
+2026-02-22 12:56:47,881 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
+2026-02-22 12:56:47,881 - WARNING - 🚨 [BRUTE_FORCE] Usuario 'usuario1' bloqueado por 5 intentos fallidos
+2026-02-22 12:56:53,431 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 64997)
+2026-02-22 12:56:53,432 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 64997)
+2026-02-22 12:56:53,446 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-22 12:56:53,446 - INFO - [OK] #6 - Tipo: login
+2026-02-22 12:56:53,446 - WARNING - 🚨 [BLOCKED] Intento de login bloqueado: usuario1 desde ('127.0.0.1', 64997)
+2026-02-22 12:58:40,215 - INFO - [*] Señal de interrupcion recibida
+2026-02-22 12:58:40,216 - INFO - [STOP] Deteniendo servidor...
+2026-02-22 12:58:40,216 - INFO - [OK] Servidor detenido correctamente

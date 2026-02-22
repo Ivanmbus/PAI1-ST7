@@ -149,11 +149,11 @@ class ClienteCLI:
                 "password": password
             }
         )
-        
-        print("\n[*] Preparando mensaje seguro...")
-        print("   |-- Generando NONCE...")
-        print("   |-- Calculando MAC...")
-        print("   |-- Conectando y enviando al servidor...")
+        if self.username_actual == "admin":
+            print("\n[*] ADMIN: Preparando mensaje seguro...")
+            print("   |-- Generando NONCE...")
+            print("   |-- Calculando MAC...")
+            print("   |-- Conectando y enviando al servidor...")
         
         # ✅ Enviar al servidor (reconecta automáticamente)
         respuesta = self.enviar_mensaje(mensaje)
@@ -176,9 +176,7 @@ class ClienteCLI:
     def iniciar_sesion(self) -> bool:
         """
         Proceso de inicio de sesión
-        
-        Returns:
-            bool: True si el login fue exitoso
+        El SERVIDOR maneja todos los intentos y bloqueos
         """
         print("\n" + "=" * 60)
         print("   INICIAR SESION".center(60))
@@ -186,7 +184,14 @@ class ClienteCLI:
         print()
         
         username = input("Nombre de usuario: ").strip()
+        if not username:
+            print("[ERROR] El nombre de usuario no puede estar vacio")
+            return False
+        
         password = getpass("Contraseña: ")
+        if not password:
+            print("[ERROR] La contraseña no puede estar vacia")
+            return False
         
         # Crear mensaje de login
         mensaje = Mensaje(
@@ -199,7 +204,7 @@ class ClienteCLI:
         
         print("\n[*] Autenticando...")
         
-        # ✅ Enviar al servidor (reconecta automáticamente)
+        # Enviar al servidor
         respuesta = self.enviar_mensaje(mensaje)
         
         if not respuesta:
@@ -208,7 +213,6 @@ class ClienteCLI:
         
         # Procesar respuesta
         if respuesta.get("status") == "ok":
-            # ✅ Guardar sesión LOCALMENTE
             self.username_actual = username
             self.sesion_activa = True
             print(f"\n[OK] {respuesta.get('mensaje')}")
@@ -217,7 +221,6 @@ class ClienteCLI:
         else:
             print(f"\n[ERROR] {respuesta.get('mensaje')}")
             return False
-    
     # ════════════════════════════════════════════════════════
     # MENÚ DE SESIÓN (USUARIO LOGUEADO)
     # ════════════════════════════════════════════════════════
@@ -229,8 +232,7 @@ class ClienteCLI:
             print(f"   SESION ACTIVA - Usuario: {self.username_actual}")
             print("-" * 60)
             print("[1] Realizar transferencia")
-            print("[2] Ver mis transacciones")
-            print("[3] Cerrar sesion")
+            print("[2] Cerrar sesion")
             print("-" * 60)
             
             opcion = input("\nSeleccione una opcion: ").strip()
@@ -238,8 +240,6 @@ class ClienteCLI:
             if opcion == "1":
                 self.realizar_transferencia()
             elif opcion == "2":
-                self.ver_transacciones()
-            elif opcion == "3":
                 self.cerrar_sesion()
             else:
                 print("[ERROR] Opcion invalida")
@@ -298,11 +298,11 @@ class ClienteCLI:
                 "cantidad": cantidad
             }
         )
-        
-        print("\n[*] Procesando transferencia segura...")
-        print("   |-- Generando NONCE unico...")
-        print("   |-- Calculando MAC de transaccion...")
-        print("   |-- Conectando y enviando al servidor...")
+        if self.username_actual == "admin":
+            print("\n[*] ADMIN: Procesando transferencia segura...")
+            print("   |-- Generando NONCE unico...")
+            print("   |-- Calculando MAC de transaccion...")
+            print("   |-- Conectando y enviando al servidor...")
         
         # ✅ Enviar al servidor (reconecta automáticamente)
         respuesta = self.enviar_mensaje(mensaje)
@@ -313,16 +313,14 @@ class ClienteCLI:
         
         # Procesar respuesta
         if respuesta.get("status") == "ok":
-            print(f"\n[OK] {respuesta.get('mensaje')}")
+            if self.username_actual == "admin":   
+                print(f"\n[OK] ADMIN: {respuesta.get('mensaje')}")
             print(f"    Transferencia de {cantidad:.2f} EUR completada")
             print("    [OK] Integridad verificada (MAC valido)")
         else:
             print(f"\n[ERROR] {respuesta.get('mensaje')}")
     
-    def ver_transacciones(self):
-        """Ver transacciones del usuario"""
-        print("\n[*] Funcionalidad en desarrollo...")
-        print("    (Implementar en Fase 6)")
+
     
     def cerrar_sesion(self):
         """Cierra la sesión actual (solo local, no envía al servidor)"""
