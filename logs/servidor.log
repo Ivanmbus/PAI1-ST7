@@ -29,8 +29,8 @@
 2026-02-15 18:20:51,036 - INFO - [OK] Base de datos inicializada
 2026-02-15 18:20:51,036 - INFO - [*] Esperando conexiones de clientes...
 
-2026-02-15 18:21:22,818 - INFO -  Nueva conexi�n desde ('127.0.0.1', 51209)
-2026-02-15 18:21:35,580 - INFO - [OK] ('127.0.0.1', 51209) - Mensaje v�lido: registro
+2026-02-15 18:21:22,818 - INFO -  Nueva conexi�n desde ('127.0.0.1', 51209)
+2026-02-15 18:21:35,580 - INFO - [OK] ('127.0.0.1', 51209) - Mensaje v�lido: registro
 2026-02-15 18:34:10,292 - INFO - ============================================================
 2026-02-15 18:34:10,292 - INFO - 
 2026-02-15 18:34:10,292 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
@@ -204,87 +204,137 @@
 2026-02-21 13:39:31,327 - INFO - [*] Señal de interrupcion recibida
 2026-02-21 13:39:31,328 - INFO - [STOP] Deteniendo servidor...
 2026-02-21 13:39:31,328 - INFO - [OK] Servidor detenido correctamente
-2026-02-22 12:53:51,902 - INFO - ============================================================
-2026-02-22 12:53:51,902 - INFO - 
-2026-02-22 12:53:51,902 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
-2026-02-22 12:53:51,902 - INFO - 
-2026-02-22 12:53:51,902 - INFO - ============================================================
-2026-02-22 12:53:51,902 - INFO - [OK] Clave compartida cargada correctamente
-2026-02-22 12:53:51,902 - INFO - [OK] Base de datos inicializada
-2026-02-22 12:53:51,902 - INFO - [OK] Modo: UNA PETICION POR CONEXION
-2026-02-22 12:53:51,903 - INFO - [*] Esperando conexiones de clientes...
-2026-02-22 12:53:51,903 - INFO - [*] Presiona Ctrl+C para detener
+2026-02-21 16:06:22,096 - INFO - ============================================================
+2026-02-21 16:06:22,096 - INFO - 
+2026-02-21 16:06:22,096 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-21 16:06:22,097 - INFO - 
+2026-02-21 16:06:22,097 - INFO - ============================================================
+2026-02-21 16:06:22,097 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-21 16:06:22,097 - INFO - [OK] Base de datos inicializada
+2026-02-21 16:06:22,097 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-21 16:06:22,097 - INFO - [*] Esperando conexiones de clientes...
+2026-02-21 16:06:22,097 - INFO - [*] Presiona Ctrl+C para detener
 
-2026-02-22 12:54:12,887 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 61948)
-2026-02-22 12:54:12,887 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 61948)
-2026-02-22 12:54:12,895 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:54:12,895 - INFO - [OK] #1 - Tipo: login
-2026-02-22 12:54:12,943 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
-2026-02-22 12:54:29,223 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 61955)
-2026-02-22 12:54:29,224 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 61955)
-2026-02-22 12:54:29,229 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:54:29,229 - INFO - [OK] #2 - Tipo: login
-2026-02-22 12:54:29,277 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
-2026-02-22 12:54:43,006 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 61960)
-2026-02-22 12:54:43,007 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 61960)
-2026-02-22 12:54:43,015 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:54:43,015 - INFO - [OK] #3 - Tipo: login
-2026-02-22 12:54:43,061 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
-2026-02-22 12:54:50,336 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 61965)
-2026-02-22 12:54:50,337 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 61965)
-2026-02-22 12:54:50,349 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:54:50,349 - INFO - [OK] #4 - Tipo: login
-2026-02-22 12:54:50,396 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
-2026-02-22 12:55:00,723 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 61970)
-2026-02-22 12:55:00,724 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 61970)
-2026-02-22 12:55:00,732 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:55:00,732 - INFO - [OK] #5 - Tipo: login
-2026-02-22 12:55:00,782 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
-2026-02-22 12:56:11,305 - INFO - [*] Señal de interrupcion recibida
-2026-02-22 12:56:11,305 - INFO - [STOP] Deteniendo servidor...
-2026-02-22 12:56:11,305 - INFO - [OK] Servidor detenido correctamente
-2026-02-22 12:56:12,759 - INFO - ============================================================
-2026-02-22 12:56:12,759 - INFO - 
-2026-02-22 12:56:12,759 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
-2026-02-22 12:56:12,759 - INFO - 
-2026-02-22 12:56:12,759 - INFO - ============================================================
-2026-02-22 12:56:12,760 - INFO - [OK] Clave compartida cargada correctamente
-2026-02-22 12:56:12,760 - INFO - [OK] Base de datos inicializada
-2026-02-22 12:56:12,760 - INFO - [OK] Modo: UNA PETICION POR CONEXION
-2026-02-22 12:56:12,760 - INFO - [*] Esperando conexiones de clientes...
-2026-02-22 12:56:12,760 - INFO - [*] Presiona Ctrl+C para detener
+2026-02-21 16:06:55,149 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 58380)
+2026-02-21 16:06:55,149 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 58380)
+2026-02-21 16:06:56,834 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:06:56,834 - INFO - [OK] #1 - Tipo: registro
+2026-02-21 16:07:12,131 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 59216)
+2026-02-21 16:07:12,131 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 59216)
+2026-02-21 16:07:12,952 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:07:12,953 - INFO - [OK] #2 - Tipo: login
+2026-02-21 16:07:12,955 - WARNING - [WARNING]  Intento de login con usuario inexistente: Ralsi
+2026-02-21 16:07:29,024 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 59218)
+2026-02-21 16:07:29,024 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 59218)
+2026-02-21 16:07:29,208 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:07:29,208 - INFO - [OK] #3 - Tipo: login
+2026-02-21 16:07:29,215 - WARNING - [WARNING]  Intento de login con usuario inexistente: Ralsi
+2026-02-21 16:07:37,990 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 59220)
+2026-02-21 16:07:37,990 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 59220)
+2026-02-21 16:07:38,311 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:07:38,312 - INFO - [OK] #4 - Tipo: registro
+2026-02-21 16:07:43,081 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 59221)
+2026-02-21 16:07:43,081 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 59221)
+2026-02-21 16:07:43,365 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:07:43,365 - INFO - [OK] #5 - Tipo: login
+2026-02-21 16:07:43,365 - WARNING - [WARNING]  Intento de login con usuario inexistente: test
+2026-02-21 16:08:52,959 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 63997)
+2026-02-21 16:08:52,959 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 63997)
+2026-02-21 16:08:53,365 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:08:53,365 - INFO - [OK] #6 - Tipo: registro
+2026-02-21 16:09:20,640 - INFO - [IN] Conexion #7 desde ('127.0.0.1', 63998)
+2026-02-21 16:09:20,641 - INFO - [IN] Conexion #7 desde ('127.0.0.1', 63998)
+2026-02-21 16:09:22,217 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:09:22,217 - INFO - [OK] #7 - Tipo: registro
+2026-02-21 16:09:39,446 - INFO - [IN] Conexion #8 desde ('127.0.0.1', 64194)
+2026-02-21 16:09:39,446 - INFO - [IN] Conexion #8 desde ('127.0.0.1', 64194)
+2026-02-21 16:09:40,258 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:09:40,258 - INFO - [OK] #8 - Tipo: registro
+2026-02-21 16:10:00,044 - INFO - [IN] Conexion #9 desde ('127.0.0.1', 64198)
+2026-02-21 16:10:00,045 - INFO - [IN] Conexion #9 desde ('127.0.0.1', 64198)
+2026-02-21 16:10:00,136 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:10:00,136 - INFO - [OK] #9 - Tipo: registro
+2026-02-21 16:10:00,268 - INFO - [OK] Usuario registrado: Ralsi
+2026-02-21 16:10:09,678 - INFO - [IN] Conexion #10 desde ('127.0.0.1', 64199)
+2026-02-21 16:10:09,679 - INFO - [IN] Conexion #10 desde ('127.0.0.1', 64199)
+2026-02-21 16:10:09,759 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:10:09,760 - INFO - [OK] #10 - Tipo: login
+2026-02-21 16:10:09,818 - INFO - [OK] Login exitoso: Ralsi
+2026-02-21 16:10:40,821 - INFO - [IN] Conexion #11 desde ('127.0.0.1', 60905)
+2026-02-21 16:10:40,821 - INFO - [IN] Conexion #11 desde ('127.0.0.1', 60905)
+2026-02-21 16:10:40,923 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:10:40,924 - INFO - [OK] #11 - Tipo: transaccion
+2026-02-21 16:10:40,996 - INFO - [OK] Transacción registrada (ID: 1): Ralsi → 5000.00 EUR (52374572834 → 7582357902)
+2026-02-21 16:24:01,904 - INFO - [*] Señal de interrupcion recibida
+2026-02-21 16:24:01,904 - INFO - [STOP] Deteniendo servidor...
+2026-02-21 16:24:01,904 - INFO - [OK] Servidor detenido correctamente
+2026-02-21 16:24:03,987 - INFO - ============================================================
+2026-02-21 16:24:03,987 - INFO - 
+2026-02-21 16:24:03,987 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-21 16:24:03,987 - INFO - 
+2026-02-21 16:24:03,988 - INFO - ============================================================
+2026-02-21 16:24:03,988 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-21 16:24:03,988 - INFO - [OK] Base de datos inicializada
+2026-02-21 16:24:03,988 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-21 16:24:03,988 - INFO - [*] Esperando conexiones de clientes...
+2026-02-21 16:24:03,988 - INFO - [*] Presiona Ctrl+C para detener
 
-2026-02-22 12:56:22,523 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 60711)
-2026-02-22 12:56:22,523 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 60711)
-2026-02-22 12:56:22,532 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:56:22,532 - INFO - [OK] #1 - Tipo: login
-2026-02-22 12:56:22,582 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
-2026-02-22 12:56:26,767 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 60713)
-2026-02-22 12:56:26,768 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 60713)
-2026-02-22 12:56:26,777 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:56:26,777 - INFO - [OK] #2 - Tipo: login
-2026-02-22 12:56:26,826 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
-2026-02-22 12:56:30,663 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 60716)
-2026-02-22 12:56:30,663 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 60716)
-2026-02-22 12:56:30,671 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:56:30,671 - INFO - [OK] #3 - Tipo: login
-2026-02-22 12:56:30,720 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
-2026-02-22 12:56:40,608 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 64984)
-2026-02-22 12:56:40,608 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 64984)
-2026-02-22 12:56:40,619 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:56:40,619 - INFO - [OK] #4 - Tipo: login
-2026-02-22 12:56:40,666 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
-2026-02-22 12:56:47,822 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 64994)
-2026-02-22 12:56:47,823 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 64994)
-2026-02-22 12:56:47,833 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:56:47,833 - INFO - [OK] #5 - Tipo: login
-2026-02-22 12:56:47,881 - WARNING - [WARNING]  Contraseña incorrecta para usuario: usuario1
-2026-02-22 12:56:47,881 - WARNING - 🚨 [BRUTE_FORCE] Usuario 'usuario1' bloqueado por 5 intentos fallidos
-2026-02-22 12:56:53,431 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 64997)
-2026-02-22 12:56:53,432 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 64997)
-2026-02-22 12:56:53,446 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
-2026-02-22 12:56:53,446 - INFO - [OK] #6 - Tipo: login
-2026-02-22 12:56:53,446 - WARNING - 🚨 [BLOCKED] Intento de login bloqueado: usuario1 desde ('127.0.0.1', 64997)
-2026-02-22 12:58:40,215 - INFO - [*] Señal de interrupcion recibida
-2026-02-22 12:58:40,216 - INFO - [STOP] Deteniendo servidor...
-2026-02-22 12:58:40,216 - INFO - [OK] Servidor detenido correctamente
+2026-02-21 16:24:37,359 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 65043)
+2026-02-21 16:24:37,360 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 65043)
+2026-02-21 16:24:37,441 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:24:37,441 - INFO - [OK] #1 - Tipo: login
+2026-02-21 16:24:37,507 - INFO - [OK] Login exitoso: test
+2026-02-21 16:28:20,567 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 58463)
+2026-02-21 16:28:20,568 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 58463)
+2026-02-21 16:28:20,676 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:28:20,677 - INFO - [OK] #2 - Tipo: login
+2026-02-21 16:28:20,736 - INFO - [OK] Login exitoso: ralsei
+2026-02-21 16:32:52,335 - INFO - [*] Señal de interrupcion recibida
+2026-02-21 16:32:52,336 - INFO - [STOP] Deteniendo servidor...
+2026-02-21 16:32:52,336 - INFO - [OK] Servidor detenido correctamente
+2026-02-21 16:32:54,708 - INFO - ============================================================
+2026-02-21 16:32:54,708 - INFO - 
+2026-02-21 16:32:54,708 - INFO -    SERVIDOR INICIADO EN 127.0.0.1:5000
+2026-02-21 16:32:54,708 - INFO - 
+2026-02-21 16:32:54,708 - INFO - ============================================================
+2026-02-21 16:32:54,708 - INFO - [OK] Clave compartida cargada correctamente
+2026-02-21 16:32:54,708 - INFO - [OK] Base de datos inicializada
+2026-02-21 16:32:54,708 - INFO - [OK] Modo: UNA PETICION POR CONEXION
+2026-02-21 16:32:54,708 - INFO - [*] Esperando conexiones de clientes...
+2026-02-21 16:32:54,708 - INFO - [*] Presiona Ctrl+C para detener
+
+2026-02-21 16:33:54,776 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 50959)
+2026-02-21 16:33:54,776 - INFO - [IN] Conexion #1 desde ('127.0.0.1', 50959)
+2026-02-21 16:33:54,865 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:33:54,865 - INFO - [OK] #1 - Tipo: login
+2026-02-21 16:33:54,932 - INFO - [OK] Login exitoso: ralsei
+2026-02-21 16:40:17,378 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 61906)
+2026-02-21 16:40:17,378 - INFO - [IN] Conexion #2 desde ('127.0.0.1', 61906)
+2026-02-21 16:40:17,469 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:40:17,469 - INFO - [OK] #2 - Tipo: login
+2026-02-21 16:40:17,537 - INFO - [OK] Login exitoso: admin
+2026-02-21 16:40:26,466 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 61907)
+2026-02-21 16:40:26,466 - INFO - [IN] Conexion #3 desde ('127.0.0.1', 61907)
+2026-02-21 16:40:29,021 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:40:29,021 - INFO - [OK] #3 - Tipo: transaccion
+2026-02-21 16:40:29,114 - INFO - [OK] Transacción registrada (ID: 2): admin → 2.00 EUR (213 → 1234)
+2026-02-21 16:41:17,512 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 54795)
+2026-02-21 16:41:17,512 - INFO - [IN] Conexion #4 desde ('127.0.0.1', 54795)
+2026-02-21 16:41:18,268 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:41:18,269 - INFO - [OK] #4 - Tipo: login
+2026-02-21 16:41:18,316 - INFO - [OK] Login exitoso: ralsei
+2026-02-21 16:41:26,354 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 54796)
+2026-02-21 16:41:26,354 - INFO - [IN] Conexion #5 desde ('127.0.0.1', 54796)
+2026-02-21 16:41:26,631 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:41:26,631 - INFO - [OK] #5 - Tipo: transaccion
+2026-02-21 16:41:26,711 - INFO - [OK] Transacción registrada (ID: 3): ralsei → 3.00 EUR (1234 → 3)
+2026-02-21 16:43:03,072 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 59220)
+2026-02-21 16:43:03,073 - INFO - [IN] Conexion #6 desde ('127.0.0.1', 59220)
+2026-02-21 16:43:03,157 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:43:03,157 - INFO - [OK] #6 - Tipo: login
+2026-02-21 16:43:03,207 - INFO - [OK] Login exitoso: ralsei
+2026-02-21 16:43:10,256 - INFO - [IN] Conexion #7 desde ('127.0.0.1', 59223)
+2026-02-21 16:43:10,256 - INFO - [IN] Conexion #7 desde ('127.0.0.1', 59223)
+2026-02-21 16:43:10,523 - INFO - [OK] Mensaje completamente validado (MAC + NONCE)
+2026-02-21 16:43:10,523 - INFO - [OK] #7 - Tipo: transaccion
+2026-02-21 16:43:10,597 - INFO - [OK] Transacción registrada (ID: 4): ralsei → 1.00 EUR (2345 → 145)

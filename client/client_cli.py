@@ -11,6 +11,7 @@ from typing import Optional
 from client.communicacion import ClienteSocket
 from common.config import Config
 from common.protocolo import Mensaje
+from datetime import datetime, timedelta
 
 # Configurar logging
 logging.basicConfig(
@@ -27,6 +28,7 @@ class ClienteCLI:
         self.host = Config.SERVER_HOST
         self.port = Config.SERVER_PORT
         self.clave_compartida = Config.get_shared_key()
+        self.estado_login: dict[str, dict] = {}
         
         # Estado de sesión (solo local)
         self.username_actual: Optional[str] = None
@@ -154,6 +156,11 @@ class ClienteCLI:
             print("   |-- Generando NONCE...")
             print("   |-- Calculando MAC...")
             print("   |-- Conectando y enviando al servidor...")
+        if self.username_actual == "admin":
+            print("\n[*] ADMIN: Preparando mensaje seguro...")
+            print("   |-- Generando NONCE...")
+            print("   |-- Calculando MAC...")
+            print("   |-- Conectando y enviando al servidor...")
         
         # ✅ Enviar al servidor (reconecta automáticamente)
         respuesta = self.enviar_mensaje(mensaje)
@@ -182,7 +189,7 @@ class ClienteCLI:
         print("   INICIAR SESION".center(60))
         print("=" * 60)
         print()
-        
+
         username = input("Nombre de usuario: ").strip()
         if not username:
             print("[ERROR] El nombre de usuario no puede estar vacio")
@@ -232,6 +239,7 @@ class ClienteCLI:
             print(f"   SESION ACTIVA - Usuario: {self.username_actual}")
             print("-" * 60)
             print("[1] Realizar transferencia")
+            print("[2] Cerrar sesion")
             print("[2] Cerrar sesion")
             print("-" * 60)
             
@@ -303,6 +311,11 @@ class ClienteCLI:
             print("   |-- Generando NONCE unico...")
             print("   |-- Calculando MAC de transaccion...")
             print("   |-- Conectando y enviando al servidor...")
+        if self.username_actual == "admin":
+            print("\n[*] ADMIN: Procesando transferencia segura...")
+            print("   |-- Generando NONCE unico...")
+            print("   |-- Calculando MAC de transaccion...")
+            print("   |-- Conectando y enviando al servidor...")
         
         # ✅ Enviar al servidor (reconecta automáticamente)
         respuesta = self.enviar_mensaje(mensaje)
@@ -315,11 +328,14 @@ class ClienteCLI:
         if respuesta.get("status") == "ok":
             if self.username_actual == "admin":   
                 print(f"\n[OK] ADMIN: {respuesta.get('mensaje')}")
+            if self.username_actual == "admin":   
+                print(f"\n[OK] ADMIN: {respuesta.get('mensaje')}")
             print(f"    Transferencia de {cantidad:.2f} EUR completada")
             print("    [OK] Integridad verificada (MAC valido)")
         else:
             print(f"\n[ERROR] {respuesta.get('mensaje')}")
     
+
 
     
     def cerrar_sesion(self):
