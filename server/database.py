@@ -117,16 +117,6 @@ class DatabaseManager:
             )
             return True
     
-    def limpiar_nonces_expirados(self):
-        """Elimina NONCEs que ya expiraron"""
-        with self.get_connection() as conn:
-            ahora = datetime.now()
-            cursor = conn.execute(
-                "DELETE FROM nonces WHERE expira < ?",
-                (ahora,)
-            )
-            eliminados = cursor.rowcount
-            return eliminados
     
     # === GESTIÓN DE TRANSACCIONES ===
     
